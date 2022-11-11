@@ -1,0 +1,34 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  mongo:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    networks:
+      - leibniz-local
+    volumes:
+      - ./mongodb-init:/docker-entrypoint-initdb.d:ro
+
+  argument-access:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    command: sh -c "cd ./services/argument-access && air"
+    ports:
+      - "9002:9002"
+    volumes:
+      - ./:/app
+      - /root/.cache/go-build
+      - go-mod-cache:/go/pkg/mod
+    networks:
+      - leibniz-local
+    depends_on:
+      - mongo
+
+
+volumes:
+  go-mod-cache:
+
+networks:
+  leibniz-local:
