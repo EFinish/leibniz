@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1;argumentaccess";
+
+package argumentaccess.v1;
+
+message Argument {
+	string id = 1;
+	google.protobuf.Timestamp created_at = 2;
+	google.protobuf.Timestamp updated_at = 3;
+	google.protobuf.Timestamp deleted_at = 4;
+	string title = 5;
+    repeated Premise premises = 6;
+	Premise conclusion_premise = 7;
+}
+
+enum PremiseCondition{
+    AND = 0;
+    OR = 1;
+    NAND = 2;
+    NOR = 3;
+    XOR = 4;
+    XNOR = 5;
+ }
+
+ enum SubjectInclusivenessLevel{
+    ALL = 0;
+    SOME = 1;
+    NONE = 2;
+ }
+
+message Premise {
+	string id = 1;
+	google.protobuf.Timestamp created_at = 2;
+	google.protobuf.Timestamp updated_at = 3;
+	google.protobuf.Timestamp deleted_at = 4;
+    Subject subject = 5; // X is Y, subject = X
+    SubjectInclusivenessLevel subject_inclusiveness_level = 6; // all X is Y, subject_inclusiveness_level = all
+    Predicate predicate = 7; // X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises 
+    repeated Premise sub_premises = 8; // (AuB)n(CuD), sub_premises = AuB, CuD is owned by the parallel_condition_premise's sub_premises
+    PremiseCondition parallel_condition = 9; // AuB, parallel condition = u
+    Premise parallel_condition_premise = 10; // AuB, parallel condition premise = B
+	Premise implication_premise = 11; // if AuB then CuD, implication premise = CuD
+}
+
+message Subject {
+	string id = 1;
+	google.protobuf.Timestamp created_at = 2;
+	google.protobuf.Timestamp updated_at = 3;
+	google.protobuf.Timestamp deleted_at = 4;
+	string body = 5;
+}
+
+message Predicate {
+	string id = 1;
+	google.protobuf.Timestamp created_at = 2;
+	google.protobuf.Timestamp updated_at = 3;
+	google.protobuf.Timestamp deleted_at = 4;
+	string body = 5;
+}

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "argumentaccess/v1/argument.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1;argumentaccess";
+
+package argumentaccess.v1;
+
+service CampaignAccess {
+	rpc Check (HealthCheckRequest) returns (HealthCheckResponse);
+	rpc Watch (HealthCheckRequest) returns (stream HealthCheckResponse);
+
+    rpc CreateSubject (CreateSubjectRequest) returns (CreateSubjectResponse) {}
+    rpc ReadSubject (ReadSubjectRequest) returns (ReadSubjectResponse) {}
+    rpc UpdateSubject (UpdateSubjectRequest) returns (UpdateSubjectResponse) {}
+    rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
+}
+
+message HealthCheckRequest {
+	string service = 1;
+}
+
+message HealthCheckResponse {
+	enum ServingStatus {
+	  UNKNOWN = 0;
+	  SERVING = 1;
+	  NOT_SERVING = 2;
+	  SERVICE_UNKNOWN = 3;  // Used only by the Watch method.
+	}
+	ServingStatus status = 1;
+}
+
+message CreateSubjectRequest {
+	Subject subject = 1;
+}
+
+message CreateSubjectResponse {
+	Subject subject = 1;
+}
+
+message ReadSubjectRequest {
+	string subject_id = 1;
+}
+
+message ReadSubjectResponse {
+	Subject subject = 1;
+}
+
+message UpdateSubjectRequest {
+	Subject subject = 1;
+}
+
+message UpdateSubjectResponse {
+	Subject subject = 1;
+}
+
+message DeleteSubjectRequest {
+	string subject_id = 1;
+}
+
+message DeleteSubjectResponse {
+	int64 deleted_count = 1;
+}
