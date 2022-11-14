@@ -11,14 +11,21 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+
+	protoOut "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1"
 )
 
-type ArgumentAccess struct {
-	argumentsCollection  *mongo.Collection
-	premisesCollection   *mongo.Collection
-	subjectsCollection   *mongo.Collection
-	predicatesCollection *mongo.Collection
-}
+type (
+	argumentAccess struct {
+		argumentsCollection  *mongo.Collection
+		premisesCollection   *mongo.Collection
+		subjectsCollection   *mongo.Collection
+		predicatesCollection *mongo.Collection
+	}
+	ArgumentAccessServiceServer struct {
+		protoOut.UnimplementedBrandAccessServer
+	}
+)
 
 var aa *ArgumentAccess
 
@@ -66,7 +73,7 @@ func main() {
 	reflection.Register(grpcServer)
 
 	// workoutAccessServer := WorkoutAccessServiceServer{}
-	// protoOut.RegisterWorkoutAccessServer(grpcServer, &workoutAccessServer)
+	protoOut.Reg(grpcServer, &workoutAccessServer)
 
 	// wa.isReadyForRequests = true
 
