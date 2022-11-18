@@ -12,29 +12,34 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	protoOut "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1"
+	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	logger "github.com/EFinish/leibniz/utilities/logger"
 )
 
 type (
 	argumentAccess struct {
+		logger               logger.LeibnizLogger
 		argumentsCollection  *mongo.Collection
 		premisesCollection   *mongo.Collection
 		subjectsCollection   *mongo.Collection
 		predicatesCollection *mongo.Collection
 	}
 	ArgumentAccessServiceServer struct {
-		protoOut.UnimplementedBrandAccessServer
+		protoOut.UnimplementedArgumentAccessServer
 	}
 )
 
-var aa *ArgumentAccess
+var aa *argumentAccess
 
 func main() {
-	aa = &ArgumentAccess{}
+	logger := logger.InitLogger("argument-access")
+	aa = &argumentAccess{
+		logger: logger,
+	}
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	argumentDBClient, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://mongo-db:27017/workout"))
+	argumentDBClient, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://mongo-db:27017/argument"))
 
 	if err != nil {
 		panic(err)
@@ -72,13 +77,11 @@ func main() {
 	grpcServer := grpc.NewServer()
 	reflection.Register(grpcServer)
 
-	// workoutAccessServer := WorkoutAccessServiceServer{}
-	protoOut.Reg(grpcServer, &workoutAccessServer)
+	argumentAccessServer := ArgumentAccessServiceServer{}
+	protoOut.RegisterArgumentAccessServer(grpcServer, &argumentAccessServer)
 
-	// wa.isReadyForRequests = true
-
-	// wa.logger.Infof("gRPC server starting")
-	// if err := grpcServer.Serve(lis); err != nil {
-	// 	wa.logger.Fatalf("failed to start gRPC server: %v", err)
-	// }
+	aa.logger.Infof("gRPC server starting")
+	if err := grpcServer.Serve(lis); err != nil {
+		aa.logger.Fatalf("failed to start gRPC server: %v", err)
+	}
 }
