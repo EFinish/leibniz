@@ -603,7 +603,7 @@ var file_argumentaccess_v1_server_proto_rawDesc = []byte{
 	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x64, 0x65, 0x6c,
 	0x65, 0x74, 0x65, 0x64, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
 	0x52, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x32, 0xd4,
-	0x04, 0x0a, 0x0e, 0x43, 0x61, 0x6d, 0x70, 0x61, 0x69, 0x67, 0x6e, 0x41, 0x63, 0x63, 0x65, 0x73,
+	0x04, 0x0a, 0x0e, 0x41, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x63, 0x65, 0x73,
 	0x73, 0x12, 0x56, 0x0a, 0x05, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x12, 0x25, 0x2e, 0x61, 0x72, 0x67,
 	0x75, 0x6d, 0x65, 0x6e, 0x74, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x48,
 	0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
@@ -683,18 +683,18 @@ var file_argumentaccess_v1_server_proto_depIdxs = []int32{
 	11, // 3: argumentaccess.v1.ReadSubjectResponse.subject:type_name -> argumentaccess.v1.Subject
 	11, // 4: argumentaccess.v1.UpdateSubjectRequest.subject:type_name -> argumentaccess.v1.Subject
 	11, // 5: argumentaccess.v1.UpdateSubjectResponse.subject:type_name -> argumentaccess.v1.Subject
-	1,  // 6: argumentaccess.v1.CampaignAccess.Check:input_type -> argumentaccess.v1.HealthCheckRequest
-	1,  // 7: argumentaccess.v1.CampaignAccess.Watch:input_type -> argumentaccess.v1.HealthCheckRequest
-	3,  // 8: argumentaccess.v1.CampaignAccess.CreateSubject:input_type -> argumentaccess.v1.CreateSubjectRequest
-	5,  // 9: argumentaccess.v1.CampaignAccess.ReadSubject:input_type -> argumentaccess.v1.ReadSubjectRequest
-	7,  // 10: argumentaccess.v1.CampaignAccess.UpdateSubject:input_type -> argumentaccess.v1.UpdateSubjectRequest
-	9,  // 11: argumentaccess.v1.CampaignAccess.DeleteSubject:input_type -> argumentaccess.v1.DeleteSubjectRequest
-	2,  // 12: argumentaccess.v1.CampaignAccess.Check:output_type -> argumentaccess.v1.HealthCheckResponse
-	2,  // 13: argumentaccess.v1.CampaignAccess.Watch:output_type -> argumentaccess.v1.HealthCheckResponse
-	4,  // 14: argumentaccess.v1.CampaignAccess.CreateSubject:output_type -> argumentaccess.v1.CreateSubjectResponse
-	6,  // 15: argumentaccess.v1.CampaignAccess.ReadSubject:output_type -> argumentaccess.v1.ReadSubjectResponse
-	8,  // 16: argumentaccess.v1.CampaignAccess.UpdateSubject:output_type -> argumentaccess.v1.UpdateSubjectResponse
-	10, // 17: argumentaccess.v1.CampaignAccess.DeleteSubject:output_type -> argumentaccess.v1.DeleteSubjectResponse
+	1,  // 6: argumentaccess.v1.ArgumentAccess.Check:input_type -> argumentaccess.v1.HealthCheckRequest
+	1,  // 7: argumentaccess.v1.ArgumentAccess.Watch:input_type -> argumentaccess.v1.HealthCheckRequest
+	3,  // 8: argumentaccess.v1.ArgumentAccess.CreateSubject:input_type -> argumentaccess.v1.CreateSubjectRequest
+	5,  // 9: argumentaccess.v1.ArgumentAccess.ReadSubject:input_type -> argumentaccess.v1.ReadSubjectRequest
+	7,  // 10: argumentaccess.v1.ArgumentAccess.UpdateSubject:input_type -> argumentaccess.v1.UpdateSubjectRequest
+	9,  // 11: argumentaccess.v1.ArgumentAccess.DeleteSubject:input_type -> argumentaccess.v1.DeleteSubjectRequest
+	2,  // 12: argumentaccess.v1.ArgumentAccess.Check:output_type -> argumentaccess.v1.HealthCheckResponse
+	2,  // 13: argumentaccess.v1.ArgumentAccess.Watch:output_type -> argumentaccess.v1.HealthCheckResponse
+	4,  // 14: argumentaccess.v1.ArgumentAccess.CreateSubject:output_type -> argumentaccess.v1.CreateSubjectResponse
+	6,  // 15: argumentaccess.v1.ArgumentAccess.ReadSubject:output_type -> argumentaccess.v1.ReadSubjectResponse
+	8,  // 16: argumentaccess.v1.ArgumentAccess.UpdateSubject:output_type -> argumentaccess.v1.UpdateSubjectResponse
+	10, // 17: argumentaccess.v1.ArgumentAccess.DeleteSubject:output_type -> argumentaccess.v1.DeleteSubjectResponse
 	12, // [12:18] is the sub-list for method output_type
 	6,  // [6:12] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name

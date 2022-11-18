@@ -18,41 +18,41 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// CampaignAccessClient is the client API for CampaignAccess service.
+// ArgumentAccessClient is the client API for ArgumentAccess service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CampaignAccessClient interface {
+type ArgumentAccessClient interface {
 	Check(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
-	Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (CampaignAccess_WatchClient, error)
+	Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (ArgumentAccess_WatchClient, error)
 	CreateSubject(ctx context.Context, in *CreateSubjectRequest, opts ...grpc.CallOption) (*CreateSubjectResponse, error)
 	ReadSubject(ctx context.Context, in *ReadSubjectRequest, opts ...grpc.CallOption) (*ReadSubjectResponse, error)
 	UpdateSubject(ctx context.Context, in *UpdateSubjectRequest, opts ...grpc.CallOption) (*UpdateSubjectResponse, error)
 	DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error)
 }
 
-type campaignAccessClient struct {
+type argumentAccessClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCampaignAccessClient(cc grpc.ClientConnInterface) CampaignAccessClient {
-	return &campaignAccessClient{cc}
+func NewArgumentAccessClient(cc grpc.ClientConnInterface) ArgumentAccessClient {
+	return &argumentAccessClient{cc}
 }
 
-func (c *campaignAccessClient) Check(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+func (c *argumentAccessClient) Check(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
 	out := new(HealthCheckResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.CampaignAccess/Check", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/Check", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *campaignAccessClient) Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (CampaignAccess_WatchClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CampaignAccess_ServiceDesc.Streams[0], "/argumentaccess.v1.CampaignAccess/Watch", opts...)
+func (c *argumentAccessClient) Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (ArgumentAccess_WatchClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ArgumentAccess_ServiceDesc.Streams[0], "/argumentaccess.v1.ArgumentAccess/Watch", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &campaignAccessWatchClient{stream}
+	x := &argumentAccessWatchClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -62,16 +62,16 @@ func (c *campaignAccessClient) Watch(ctx context.Context, in *HealthCheckRequest
 	return x, nil
 }
 
-type CampaignAccess_WatchClient interface {
+type ArgumentAccess_WatchClient interface {
 	Recv() (*HealthCheckResponse, error)
 	grpc.ClientStream
 }
 
-type campaignAccessWatchClient struct {
+type argumentAccessWatchClient struct {
 	grpc.ClientStream
 }
 
-func (x *campaignAccessWatchClient) Recv() (*HealthCheckResponse, error) {
+func (x *argumentAccessWatchClient) Recv() (*HealthCheckResponse, error) {
 	m := new(HealthCheckResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -79,233 +79,233 @@ func (x *campaignAccessWatchClient) Recv() (*HealthCheckResponse, error) {
 	return m, nil
 }
 
-func (c *campaignAccessClient) CreateSubject(ctx context.Context, in *CreateSubjectRequest, opts ...grpc.CallOption) (*CreateSubjectResponse, error) {
+func (c *argumentAccessClient) CreateSubject(ctx context.Context, in *CreateSubjectRequest, opts ...grpc.CallOption) (*CreateSubjectResponse, error) {
 	out := new(CreateSubjectResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.CampaignAccess/CreateSubject", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreateSubject", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *campaignAccessClient) ReadSubject(ctx context.Context, in *ReadSubjectRequest, opts ...grpc.CallOption) (*ReadSubjectResponse, error) {
+func (c *argumentAccessClient) ReadSubject(ctx context.Context, in *ReadSubjectRequest, opts ...grpc.CallOption) (*ReadSubjectResponse, error) {
 	out := new(ReadSubjectResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.CampaignAccess/ReadSubject", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadSubject", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *campaignAccessClient) UpdateSubject(ctx context.Context, in *UpdateSubjectRequest, opts ...grpc.CallOption) (*UpdateSubjectResponse, error) {
+func (c *argumentAccessClient) UpdateSubject(ctx context.Context, in *UpdateSubjectRequest, opts ...grpc.CallOption) (*UpdateSubjectResponse, error) {
 	out := new(UpdateSubjectResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.CampaignAccess/UpdateSubject", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdateSubject", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *campaignAccessClient) DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error) {
+func (c *argumentAccessClient) DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error) {
 	out := new(DeleteSubjectResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.CampaignAccess/DeleteSubject", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeleteSubject", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CampaignAccessServer is the server API for CampaignAccess service.
-// All implementations must embed UnimplementedCampaignAccessServer
+// ArgumentAccessServer is the server API for ArgumentAccess service.
+// All implementations must embed UnimplementedArgumentAccessServer
 // for forward compatibility
-type CampaignAccessServer interface {
+type ArgumentAccessServer interface {
 	Check(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
-	Watch(*HealthCheckRequest, CampaignAccess_WatchServer) error
+	Watch(*HealthCheckRequest, ArgumentAccess_WatchServer) error
 	CreateSubject(context.Context, *CreateSubjectRequest) (*CreateSubjectResponse, error)
 	ReadSubject(context.Context, *ReadSubjectRequest) (*ReadSubjectResponse, error)
 	UpdateSubject(context.Context, *UpdateSubjectRequest) (*UpdateSubjectResponse, error)
 	DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error)
-	mustEmbedUnimplementedCampaignAccessServer()
+	mustEmbedUnimplementedArgumentAccessServer()
 }
 
-// UnimplementedCampaignAccessServer must be embedded to have forward compatible implementations.
-type UnimplementedCampaignAccessServer struct {
+// UnimplementedArgumentAccessServer must be embedded to have forward compatible implementations.
+type UnimplementedArgumentAccessServer struct {
 }
 
-func (UnimplementedCampaignAccessServer) Check(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+func (UnimplementedArgumentAccessServer) Check(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Check not implemented")
 }
-func (UnimplementedCampaignAccessServer) Watch(*HealthCheckRequest, CampaignAccess_WatchServer) error {
+func (UnimplementedArgumentAccessServer) Watch(*HealthCheckRequest, ArgumentAccess_WatchServer) error {
 	return status.Errorf(codes.Unimplemented, "method Watch not implemented")
 }
-func (UnimplementedCampaignAccessServer) CreateSubject(context.Context, *CreateSubjectRequest) (*CreateSubjectResponse, error) {
+func (UnimplementedArgumentAccessServer) CreateSubject(context.Context, *CreateSubjectRequest) (*CreateSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSubject not implemented")
 }
-func (UnimplementedCampaignAccessServer) ReadSubject(context.Context, *ReadSubjectRequest) (*ReadSubjectResponse, error) {
+func (UnimplementedArgumentAccessServer) ReadSubject(context.Context, *ReadSubjectRequest) (*ReadSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadSubject not implemented")
 }
-func (UnimplementedCampaignAccessServer) UpdateSubject(context.Context, *UpdateSubjectRequest) (*UpdateSubjectResponse, error) {
+func (UnimplementedArgumentAccessServer) UpdateSubject(context.Context, *UpdateSubjectRequest) (*UpdateSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSubject not implemented")
 }
-func (UnimplementedCampaignAccessServer) DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error) {
+func (UnimplementedArgumentAccessServer) DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubject not implemented")
 }
-func (UnimplementedCampaignAccessServer) mustEmbedUnimplementedCampaignAccessServer() {}
+func (UnimplementedArgumentAccessServer) mustEmbedUnimplementedArgumentAccessServer() {}
 
-// UnsafeCampaignAccessServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CampaignAccessServer will
+// UnsafeArgumentAccessServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ArgumentAccessServer will
 // result in compilation errors.
-type UnsafeCampaignAccessServer interface {
-	mustEmbedUnimplementedCampaignAccessServer()
+type UnsafeArgumentAccessServer interface {
+	mustEmbedUnimplementedArgumentAccessServer()
 }
 
-func RegisterCampaignAccessServer(s grpc.ServiceRegistrar, srv CampaignAccessServer) {
-	s.RegisterService(&CampaignAccess_ServiceDesc, srv)
+func RegisterArgumentAccessServer(s grpc.ServiceRegistrar, srv ArgumentAccessServer) {
+	s.RegisterService(&ArgumentAccess_ServiceDesc, srv)
 }
 
-func _CampaignAccess_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ArgumentAccess_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HealthCheckRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignAccessServer).Check(ctx, in)
+		return srv.(ArgumentAccessServer).Check(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.CampaignAccess/Check",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/Check",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignAccessServer).Check(ctx, req.(*HealthCheckRequest))
+		return srv.(ArgumentAccessServer).Check(ctx, req.(*HealthCheckRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignAccess_Watch_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ArgumentAccess_Watch_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(HealthCheckRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(CampaignAccessServer).Watch(m, &campaignAccessWatchServer{stream})
+	return srv.(ArgumentAccessServer).Watch(m, &argumentAccessWatchServer{stream})
 }
 
-type CampaignAccess_WatchServer interface {
+type ArgumentAccess_WatchServer interface {
 	Send(*HealthCheckResponse) error
 	grpc.ServerStream
 }
 
-type campaignAccessWatchServer struct {
+type argumentAccessWatchServer struct {
 	grpc.ServerStream
 }
 
-func (x *campaignAccessWatchServer) Send(m *HealthCheckResponse) error {
+func (x *argumentAccessWatchServer) Send(m *HealthCheckResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _CampaignAccess_CreateSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ArgumentAccess_CreateSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateSubjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignAccessServer).CreateSubject(ctx, in)
+		return srv.(ArgumentAccessServer).CreateSubject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.CampaignAccess/CreateSubject",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreateSubject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignAccessServer).CreateSubject(ctx, req.(*CreateSubjectRequest))
+		return srv.(ArgumentAccessServer).CreateSubject(ctx, req.(*CreateSubjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignAccess_ReadSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ArgumentAccess_ReadSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReadSubjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignAccessServer).ReadSubject(ctx, in)
+		return srv.(ArgumentAccessServer).ReadSubject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.CampaignAccess/ReadSubject",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadSubject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignAccessServer).ReadSubject(ctx, req.(*ReadSubjectRequest))
+		return srv.(ArgumentAccessServer).ReadSubject(ctx, req.(*ReadSubjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignAccess_UpdateSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ArgumentAccess_UpdateSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateSubjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignAccessServer).UpdateSubject(ctx, in)
+		return srv.(ArgumentAccessServer).UpdateSubject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.CampaignAccess/UpdateSubject",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdateSubject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignAccessServer).UpdateSubject(ctx, req.(*UpdateSubjectRequest))
+		return srv.(ArgumentAccessServer).UpdateSubject(ctx, req.(*UpdateSubjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignAccess_DeleteSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ArgumentAccess_DeleteSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteSubjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignAccessServer).DeleteSubject(ctx, in)
+		return srv.(ArgumentAccessServer).DeleteSubject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.CampaignAccess/DeleteSubject",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeleteSubject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignAccessServer).DeleteSubject(ctx, req.(*DeleteSubjectRequest))
+		return srv.(ArgumentAccessServer).DeleteSubject(ctx, req.(*DeleteSubjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CampaignAccess_ServiceDesc is the grpc.ServiceDesc for CampaignAccess service.
+// ArgumentAccess_ServiceDesc is the grpc.ServiceDesc for ArgumentAccess service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CampaignAccess_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "argumentaccess.v1.CampaignAccess",
-	HandlerType: (*CampaignAccessServer)(nil),
+var ArgumentAccess_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "argumentaccess.v1.ArgumentAccess",
+	HandlerType: (*ArgumentAccessServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Check",
-			Handler:    _CampaignAccess_Check_Handler,
+			Handler:    _ArgumentAccess_Check_Handler,
 		},
 		{
 			MethodName: "CreateSubject",
-			Handler:    _CampaignAccess_CreateSubject_Handler,
+			Handler:    _ArgumentAccess_CreateSubject_Handler,
 		},
 		{
 			MethodName: "ReadSubject",
-			Handler:    _CampaignAccess_ReadSubject_Handler,
+			Handler:    _ArgumentAccess_ReadSubject_Handler,
 		},
 		{
 			MethodName: "UpdateSubject",
-			Handler:    _CampaignAccess_UpdateSubject_Handler,
+			Handler:    _ArgumentAccess_UpdateSubject_Handler,
 		},
 		{
 			MethodName: "DeleteSubject",
-			Handler:    _CampaignAccess_DeleteSubject_Handler,
+			Handler:    _ArgumentAccess_DeleteSubject_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Watch",
-			Handler:       _CampaignAccess_Watch_Handler,
+			Handler:       _ArgumentAccess_Watch_Handler,
 			ServerStreams: true,
 		},
 	},

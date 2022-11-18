@@ -7,7 +7,7 @@ option go_package = "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1;a
 
 package argumentaccess.v1;
 
-service CampaignAccess {
+service ArgumentAccess {
 	rpc Check (HealthCheckRequest) returns (HealthCheckResponse);
 	rpc Watch (HealthCheckRequest) returns (stream HealthCheckResponse);
 
