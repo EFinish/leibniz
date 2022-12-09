@@ -6,8 +6,8 @@ services:
       - "27017:27017"
     networks:
       - leibniz-local
-    volumes:
-      - ./mongodb-init:/docker-entrypoint-initdb.d:ro
+    # volumes:
+    #   - ./mongodb-init:/docker-entrypoint-initdb.d:ro
 
   argument-access:
     build:
@@ -15,6 +15,8 @@ services:
       dockerfile: Dockerfile
     init: true
     command: sh -c "cd ./services/argument-access && air"
+    env_file:
+        - ././services/argument-access/.env.prod
     ports:
       - "9002:9002"
     volumes:

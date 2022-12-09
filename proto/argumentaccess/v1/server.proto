@@ -44,7 +44,7 @@ message ReadSubjectRequest {
 }
 
 message ReadSubjectResponse {
-	Subject subject = 1;
+	repeated Subject subjects = 1;
 }
 
 message UpdateSubjectRequest {

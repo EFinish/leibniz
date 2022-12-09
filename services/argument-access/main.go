@@ -13,11 +13,13 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	"github.com/EFinish/leibniz/services/argument-access/config"
 	logger "github.com/EFinish/leibniz/utilities/logger"
 )
 
 type (
 	argumentAccess struct {
+		conf                 *config.Config
 		logger               logger.LeibnizLogger
 		argumentsCollection  *mongo.Collection
 		premisesCollection   *mongo.Collection
@@ -32,42 +34,55 @@ type (
 var aa *argumentAccess
 
 func main() {
+	conf := config.GetConfig()
 	logger := logger.InitLogger("argument-access")
 	aa = &argumentAccess{
 		logger: logger,
+		conf:   conf,
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+
+	bgContext := context.Background()
+
+	ctx, cancel := context.WithTimeout(bgContext, 10*time.Second)
 	defer cancel()
 
-	argumentDBClient, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://mongo-db:27017/argument"))
+	fmt.Printf("connect to %v\n", aa.conf.ArgumentDbURL)
 
+	dbClient, err := mongo.Connect(ctx, options.Client().ApplyURI(aa.conf.ArgumentDbURL))
 	if err != nil {
+		fmt.Printf("unable to connect to argument database: %v", err)
+
 		panic(err)
 	}
-	defer func() {
-		if err = argumentDBClient.Disconnect(ctx); err != nil {
-			panic(err)
-		}
-	}()
+	// dbDisconnect := func() {
+	// 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	// 	defer cancel()
+	// 	if err := dbClient.Disconnect(ctx); err != nil {
+	// 		panic(err)
+	// 	}
+	// }
 
-	ctx, cancel = context.WithTimeout(context.Background(), 2*time.Second)
+	ctx, cancel = context.WithTimeout(bgContext, 2*time.Second)
 	defer cancel()
-	err = argumentDBClient.Ping(ctx, readpref.Primary())
-
+	err = dbClient.Ping(ctx, readpref.Primary())
 	if err != nil {
+		fmt.Printf("unable to ping to argument database: %v", err)
+
 		panic(err)
 	}
+
+	// ba.configurationCollection = dbClient.Database("brand").Collection("configuration")
 
 	fmt.Println("connected to mongo DB for argument database")
 
-	aa.argumentsCollection = argumentDBClient.Database("argument").Collection("arguments")
-	aa.premisesCollection = argumentDBClient.Database("argument").Collection("premises")
-	aa.subjectsCollection = argumentDBClient.Database("argument").Collection("subjects")
-	aa.predicatesCollection = argumentDBClient.Database("argument").Collection("predicates")
+	aa.argumentsCollection = dbClient.Database("argument").Collection("arguments")
+	aa.premisesCollection = dbClient.Database("argument").Collection("premises")
+	aa.subjectsCollection = dbClient.Database("argument").Collection("subjects")
+	aa.predicatesCollection = dbClient.Database("argument").Collection("predicates")
 
-	fmt.Println("Listening on port 9002")
+	fmt.Printf("Listening on port %v\n", conf.GrpcPort)
 
-	lis, err := net.Listen("tcp", ":9002")
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%v", conf.GrpcPort))
 
 	if err != nil {
 		panic(err)

@@ -45,15 +45,14 @@ func TestMain(m *testing.M) {
 }
 
 func initializeArgumentAccessClient() {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	var opts []grpc.DialOption
 	opts = append(opts, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	opts = append(opts, grpc.WithBlock())
-	grpcHost := getEnv("ARGUMENT_ACCESS_TEST_GRPC_HOST", "localhost")
-	grpcPort := getEnv("ARGUMENT_ACCESS_TEST_GRPC_PORT", "9002")
-	serverAddr := fmt.Sprintf("%s:%s", grpcHost, grpcPort)
+	serverAddr := getEnv("ARGUMENT_ACCESS_TEST_ADDRESS", "localhost:9003")
+	fmt.Printf("potato %v\n", serverAddr)
 	conn, err := grpc.DialContext(ctx, serverAddr, opts...)
 
 	if err != nil {
@@ -69,7 +68,7 @@ func initializeMongoDBConnections() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	argumentDBUrl := getEnv("ARGUMENT_ACCESS_TEST_ARGUMENT_DB_URL", "mongodb://localhost:27017/argument")
+	argumentDBUrl := getEnv("ARGUMENT_ACCESS_ARGUMENT_DB_URL", "mongodb://mongo-db:27018/argument")
 	argumentDbClient, err := mongo.Connect(ctx, options.Client().ApplyURI(argumentDBUrl))
 
 	if err != nil {

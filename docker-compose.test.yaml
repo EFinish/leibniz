@@ -1,0 +1,53 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  mongo-test:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    networks:
+      - leibniz-test-local
+    volumes:
+      - ./mongodb-init:/docker-entrypoint-initdb.d:ro
+
+  argument-access-emulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    command: sh -c "cd ./services/argument-access && air"
+    env_file:
+        - ./services/argument-access/.env.test
+    ports:
+      - "9003:9003"
+    volumes:
+      - ./:/app
+      - /root/.cache/go-build
+      - go-mod-cache:/go/pkg/mod
+    networks:
+      - leibniz-test-local
+    depends_on:
+      - mongo-test
+
+  argument-access-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c 'cd ./services/argument-access && go test ./...'
+    env_file:
+        - ./services/argument-access/.env.test
+    volumes:
+      - ./:/app
+      - /root/.cache/go-build
+      - go-mod-cache:/go/pkg/mod
+    networks:
+      - leibniz-test-local
+    depends_on:
+      - mongo-test
+      - argument-access-emulator
+
+
+volumes:
+  go-mod-cache:
+
+networks:
+  leibniz-test-local:
