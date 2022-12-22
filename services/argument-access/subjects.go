@@ -7,6 +7,7 @@ import (
 
 	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
 	conversion "github.com/EFinish/leibniz/utilities/conversion"
+	"google.golang.org/protobuf/types/known/timestamppb"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -50,7 +51,6 @@ func (s *SubjectJsonConvertable) toProto() (*protoOut.Subject, error) {
 	}, nil
 }
 
-// TODO test this function
 func insertSubject(ctx context.Context, subject *protoOut.Subject) (insertedSubject *protoOut.Subject, err error) {
 	insertSubject := bson.M{
 		"created_at": time.Now(),
@@ -81,11 +81,54 @@ func insertSubject(ctx context.Context, subject *protoOut.Subject) (insertedSubj
 	return insertedSubject, nil
 }
 
-// func getSubjects(ctx context.Context, subjectID string) (*protoOut.Subject, error) {
+func getSubjects(ctx context.Context, subjectID string) ([]*protoOut.Subject, error) {
+	filter := bson.M{}
 
-// }
+	if len(subjectID) > 0 {
+		filter["id"] = subjectID
+	}
 
-// TODO test this
+	cursor, err := aa.subjectsCollection.Find(ctx, filter)
+	if err != nil {
+		return nil, fmt.Errorf("MongoDb error: %w", err)
+	}
+
+	found := []SubjectJsonConvertable{}
+	err = cursor.All(ctx, &found)
+
+	if err != nil {
+		return nil, fmt.Errorf("while decoding: %w", err)
+	}
+
+	var subs []*protoOut.Subject
+	for _, sub := range found {
+		created, err := time.Parse(time.RFC3339, sub.CreatedAt)
+		if err != nil {
+			return nil, fmt.Errorf("while parsing createdat: %w", err)
+		}
+
+		updated, err := time.Parse(time.RFC3339, sub.UpdatedAt)
+		if err != nil {
+			return nil, fmt.Errorf("while parsing updatedat: %w", err)
+		}
+
+		deleted, err := time.Parse(time.RFC3339, sub.DeletedAt)
+		if err != nil {
+			return nil, fmt.Errorf("while parsing deletedat: %w", err)
+		}
+
+		subs = append(subs, &protoOut.Subject{
+			Id:        sub.ID.Hex(),
+			CreatedAt: timestamppb.New(created),
+			UpdatedAt: timestamppb.New(updated),
+			DeletedAt: timestamppb.New(deleted),
+			Body:      sub.Body,
+		})
+	}
+
+	return subs, nil
+}
+
 func updateSubject(ctx context.Context, subject *protoOut.Subject) (*protoOut.Subject, error) {
 	aa.logger.Infof("Updating subject record ID %v", subject.Id)
 
@@ -126,7 +169,6 @@ func updateSubject(ctx context.Context, subject *protoOut.Subject) (*protoOut.Su
 	return protoSubject, nil
 }
 
-// TODO test this
 func deleteSubject(ctx context.Context, subjectId string) (*int64, error) {
 	filter := bson.M{}
 	filter["_id"] = subjectId

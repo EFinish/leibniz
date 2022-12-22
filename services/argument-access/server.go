@@ -61,9 +61,17 @@ func (s *ArgumentAccessServiceServer) CreateSubject(ctx context.Context, req *pr
 	}, nil
 }
 
-// func (s *ArgumentAccessServiceServer) ReadSubject(ctx context.Context, req *protoOut.ReadSubjectRequest) (*protoOut, protoOut.ReadSubjectResponse, error) {
+func (s *ArgumentAccessServiceServer) ReadSubject(ctx context.Context, req *protoOut.ReadSubjectRequest) (*protoOut.ReadSubjectResponse, error) {
+	subjects, err := getSubjects(ctx, req.SubjectId)
 
-// }
+	if err != nil {
+		return nil, fmt.Errorf("during subject reading: %w", err)
+	}
+
+	return &protoOut.ReadSubjectResponse{
+		Subjects: subjects,
+	}, nil
+}
 
 func (s *ArgumentAccessServiceServer) UpdateSubject(ctx context.Context, req *protoOut.UpdateSubjectRequest) (*protoOut.UpdateSubjectResponse, error) {
 	if req.Subject == nil {
