@@ -24,7 +24,7 @@ type PremiseJsonConvertable struct {
 	UpdatedAt string             `bson:"updated_at,omitempty"`
 	DeletedAt string             `bson:"deleted_at,omitempty"`
 	// Subject                   string             `bson:"subject,omitempty"`
-	SubjectInclusivenessLevel string `bson:"subject_inclusiveness_level,omitempty"`
+	SubjectQuantifier string `bson:"subject_quantifier,omitempty"`
 	// Predicate                 string             `bson:"predicate,omitempty"`
 	// SubPremises               string             `bson:"sub_premises,omitempty"`
 	ParallelCondition string `bson:"parallel_condition,omitempty"`

@@ -15,6 +15,11 @@ service ArgumentAccess {
     rpc ReadSubject (ReadSubjectRequest) returns (ReadSubjectResponse) {}
     rpc UpdateSubject (UpdateSubjectRequest) returns (UpdateSubjectResponse) {}
     rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
+
+	rpc CreatePredicate (CreatePredicateRequest) returns (CreatePredicateResponse) {}
+    rpc ReadPredicate (ReadPredicateRequest) returns (ReadPredicateResponse) {}
+    rpc UpdatePredicate (UpdatePredicateRequest) returns (UpdatePredicateResponse) {}
+    rpc DeletePredicate (DeletePredicateRequest) returns (DeletePredicateResponse) {}
 }
 
 message HealthCheckRequest {
@@ -29,6 +34,38 @@ message HealthCheckResponse {
 	  SERVICE_UNKNOWN = 3;  // Used only by the Watch method.
 	}
 	ServingStatus status = 1;
+}
+
+message CreatePredicateRequest {
+	Predicate predicate = 1;
+}
+
+message CreatePredicateResponse {
+	Predicate predicate = 1;
+}
+
+message ReadPredicateRequest {
+	string predicate_id = 1;
+}
+
+message ReadPredicateResponse {
+	repeated Predicate predicates = 1;
+}
+
+message UpdatePredicateRequest {
+	Predicate predicate = 1;
+}
+
+message UpdatePredicateResponse {
+	Predicate predicate = 1;
+}
+
+message DeletePredicateRequest {
+	string predicate_id = 1;
+}
+
+message DeletePredicateResponse {
+	int64 deleted_count = 1;
 }
 
 message CreateSubjectRequest {

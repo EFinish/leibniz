@@ -28,6 +28,10 @@ type ArgumentAccessClient interface {
 	ReadSubject(ctx context.Context, in *ReadSubjectRequest, opts ...grpc.CallOption) (*ReadSubjectResponse, error)
 	UpdateSubject(ctx context.Context, in *UpdateSubjectRequest, opts ...grpc.CallOption) (*UpdateSubjectResponse, error)
 	DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error)
+	CreatePredicate(ctx context.Context, in *CreatePredicateRequest, opts ...grpc.CallOption) (*CreatePredicateResponse, error)
+	ReadPredicate(ctx context.Context, in *ReadPredicateRequest, opts ...grpc.CallOption) (*ReadPredicateResponse, error)
+	UpdatePredicate(ctx context.Context, in *UpdatePredicateRequest, opts ...grpc.CallOption) (*UpdatePredicateResponse, error)
+	DeletePredicate(ctx context.Context, in *DeletePredicateRequest, opts ...grpc.CallOption) (*DeletePredicateResponse, error)
 }
 
 type argumentAccessClient struct {
@@ -115,6 +119,42 @@ func (c *argumentAccessClient) DeleteSubject(ctx context.Context, in *DeleteSubj
 	return out, nil
 }
 
+func (c *argumentAccessClient) CreatePredicate(ctx context.Context, in *CreatePredicateRequest, opts ...grpc.CallOption) (*CreatePredicateResponse, error) {
+	out := new(CreatePredicateResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreatePredicate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) ReadPredicate(ctx context.Context, in *ReadPredicateRequest, opts ...grpc.CallOption) (*ReadPredicateResponse, error) {
+	out := new(ReadPredicateResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadPredicate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) UpdatePredicate(ctx context.Context, in *UpdatePredicateRequest, opts ...grpc.CallOption) (*UpdatePredicateResponse, error) {
+	out := new(UpdatePredicateResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdatePredicate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) DeletePredicate(ctx context.Context, in *DeletePredicateRequest, opts ...grpc.CallOption) (*DeletePredicateResponse, error) {
+	out := new(DeletePredicateResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeletePredicate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ArgumentAccessServer is the server API for ArgumentAccess service.
 // All implementations must embed UnimplementedArgumentAccessServer
 // for forward compatibility
@@ -125,6 +165,10 @@ type ArgumentAccessServer interface {
 	ReadSubject(context.Context, *ReadSubjectRequest) (*ReadSubjectResponse, error)
 	UpdateSubject(context.Context, *UpdateSubjectRequest) (*UpdateSubjectResponse, error)
 	DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error)
+	CreatePredicate(context.Context, *CreatePredicateRequest) (*CreatePredicateResponse, error)
+	ReadPredicate(context.Context, *ReadPredicateRequest) (*ReadPredicateResponse, error)
+	UpdatePredicate(context.Context, *UpdatePredicateRequest) (*UpdatePredicateResponse, error)
+	DeletePredicate(context.Context, *DeletePredicateRequest) (*DeletePredicateResponse, error)
 	mustEmbedUnimplementedArgumentAccessServer()
 }
 
@@ -149,6 +193,18 @@ func (UnimplementedArgumentAccessServer) UpdateSubject(context.Context, *UpdateS
 }
 func (UnimplementedArgumentAccessServer) DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubject not implemented")
+}
+func (UnimplementedArgumentAccessServer) CreatePredicate(context.Context, *CreatePredicateRequest) (*CreatePredicateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePredicate not implemented")
+}
+func (UnimplementedArgumentAccessServer) ReadPredicate(context.Context, *ReadPredicateRequest) (*ReadPredicateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadPredicate not implemented")
+}
+func (UnimplementedArgumentAccessServer) UpdatePredicate(context.Context, *UpdatePredicateRequest) (*UpdatePredicateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePredicate not implemented")
+}
+func (UnimplementedArgumentAccessServer) DeletePredicate(context.Context, *DeletePredicateRequest) (*DeletePredicateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePredicate not implemented")
 }
 func (UnimplementedArgumentAccessServer) mustEmbedUnimplementedArgumentAccessServer() {}
 
@@ -274,6 +330,78 @@ func _ArgumentAccess_DeleteSubject_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ArgumentAccess_CreatePredicate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePredicateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).CreatePredicate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreatePredicate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).CreatePredicate(ctx, req.(*CreatePredicateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_ReadPredicate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadPredicateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).ReadPredicate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadPredicate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).ReadPredicate(ctx, req.(*ReadPredicateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_UpdatePredicate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePredicateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).UpdatePredicate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdatePredicate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).UpdatePredicate(ctx, req.(*UpdatePredicateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_DeletePredicate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePredicateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).DeletePredicate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeletePredicate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).DeletePredicate(ctx, req.(*DeletePredicateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ArgumentAccess_ServiceDesc is the grpc.ServiceDesc for ArgumentAccess service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -300,6 +428,22 @@ var ArgumentAccess_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteSubject",
 			Handler:    _ArgumentAccess_DeleteSubject_Handler,
+		},
+		{
+			MethodName: "CreatePredicate",
+			Handler:    _ArgumentAccess_CreatePredicate_Handler,
+		},
+		{
+			MethodName: "ReadPredicate",
+			Handler:    _ArgumentAccess_ReadPredicate_Handler,
+		},
+		{
+			MethodName: "UpdatePredicate",
+			Handler:    _ArgumentAccess_UpdatePredicate_Handler,
+		},
+		{
+			MethodName: "DeletePredicate",
+			Handler:    _ArgumentAccess_DeletePredicate_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
