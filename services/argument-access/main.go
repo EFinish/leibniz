@@ -46,8 +46,6 @@ func main() {
 	ctx, cancel := context.WithTimeout(bgContext, 10*time.Second)
 	defer cancel()
 
-	fmt.Printf("connect to %v\n", aa.conf.ArgumentDbURL)
-
 	dbClient, err := mongo.Connect(ctx, options.Client().ApplyURI(aa.conf.ArgumentDbURL))
 	if err != nil {
 		fmt.Printf("unable to connect to argument database: %v", err)
@@ -70,8 +68,6 @@ func main() {
 
 		panic(err)
 	}
-
-	// ba.configurationCollection = dbClient.Database("brand").Collection("configuration")
 
 	fmt.Println("connected to mongo DB for argument database")
 

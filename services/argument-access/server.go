@@ -10,20 +10,6 @@ import (
 	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
 )
 
-type PremiseJsonConvertable struct {
-	ID        primitive.ObjectID `bson:"_id,omitempty"`
-	CreatedAt string             `bson:"created_at,omitempty"`
-	UpdatedAt string             `bson:"updated_at,omitempty"`
-	DeletedAt string             `bson:"deleted_at,omitempty"`
-	// Subject                   string             `bson:"subject,omitempty"`
-	SubjectQuantifier string `bson:"subject_quantifier,omitempty"`
-	// Predicate                 string             `bson:"predicate,omitempty"`
-	// SubPremises               string             `bson:"sub_premises,omitempty"`
-	ParallelCondition string `bson:"parallel_condition,omitempty"`
-	// ParallelConditionPremise  string             `bson:"parallel_condition_premise,omitempty"`
-	// ImplicationPremise        string             `bson:"implication_premise,omitempty"`
-}
-
 type ArgumentJSONConvertable struct {
 	ID        primitive.ObjectID `bson:"_id,omitempty"`
 	CreatedAt string             `bson:"created_at,omitempty"`
