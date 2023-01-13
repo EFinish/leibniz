@@ -1,14 +1,16 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "go/argumentaccess/v1;argumentaccess";
 
 package argumentaccess.v1;
 
 message Argument {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
 	string title = 5; // @gotags: bson:"title"
     repeated Premise premises = 6; // @gotags: bson:"premises"
 	repeated ConditionalStatement conditional_statements = 7; // @gotags: bson:"conditional_statements"
@@ -38,9 +40,9 @@ enum PropositionType{
 
 message ConditionalStatement {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
 	Premise if_premise = 5; // @gotags: bson:"if_premise" 
 	Premise then_premise = 6; // @gotags: bson:"then_premise" 
 	Proposition if_proposition = 7; // @gotags: bson:"if_proposition" 
@@ -49,9 +51,9 @@ message ConditionalStatement {
 
 message Proposition {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
 	PropositionType proposition_type = 9; // @gotags: bson:"proposition_type" 
 	repeated Premise proposition_sub_premises = 10; // @gotags: bson:"proposition_sub_premises" 
 	repeated Proposition proposition_sub_propositions = 11; // @gotags: bson:"proposition_sub_propositions" 
@@ -59,9 +61,9 @@ message Proposition {
 
 message Premise {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
     Subject subject = 5; // @gotags: bson:"subject" 
 	// X is Y, subject = X
     SubjectQuantifier subject_quantifier = 6; // @gotags: bson:"subject_quantifier"
@@ -74,16 +76,16 @@ message Premise {
 
 message Subject {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
 	string body = 5; // @gotags: bson:"body"
 }
 
 message Predicate {
 	string id = 1; // @gotags: bson:"_id"
-	string created_at = 2; // @gotags: bson:"created_at"
-	string updated_at = 3; // @gotags: bson:"updated_at"
-	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	google.protobuf.Timestamp created_at = 2; // @gotags: bson:"created_at"
+	google.protobuf.Timestamp updated_at = 3; // @gotags: bson:"updated_at"
+	google.protobuf.Timestamp deleted_at = 4; // @gotags: bson:"deleted_at"
 	string body = 5; // @gotags: bson:"body"
 }
