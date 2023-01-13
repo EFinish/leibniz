@@ -1,6 +1,7 @@
 generate:
 	rm -rf ./gen/*
 	protoc -I=. --go-grpc_out=./gen/ --go_out=./gen/ **/**/*.proto
+	protoc-go-inject-tag -input="./gen/go/**/**/*.pb.go"
 
 lint:
 	protoc --lint_out=. *.proto
