@@ -12,7 +12,9 @@ require (
 )
 
 require (
+	github.com/ckaznocha/protoc-gen-lint v0.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/favadi/protoc-go-inject-tag v1.4.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/golang/glog v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

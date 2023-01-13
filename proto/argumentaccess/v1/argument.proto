@@ -1,16 +1,14 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-
-option go_package = "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1;argumentaccess";
+option go_package = "go/argumentaccess/v1;argumentaccess";
 
 package argumentaccess.v1;
 
 message Argument {
 	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
+	string created_at = 2;
+	string updated_at = 3;
+	string deleted_at = 4;
 	string title = 5;
     repeated Premise premises = 6;
 	repeated ConditionalStatement conditional_statements = 7;
@@ -39,10 +37,10 @@ enum PropositionType{
  }
 
 message ConditionalStatement {
-	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
 	Premise if_premise = 5;
 	Premise then_premise = 6;
 	Proposition if_proposition = 7;
@@ -50,20 +48,20 @@ message ConditionalStatement {
 }
 
 message Proposition {
-	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
 	PropositionType proposition_type = 9;
 	repeated Premise proposition_sub_premises = 10;
 	repeated Proposition proposition_sub_propositions = 11;
 }
 
 message Premise {
-	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
     Subject subject = 5; // X is Y, subject = X
     SubjectQuantifier subject_quantifier = 6; // all X is Y, subject_quantifier = all
     Predicate predicate = 7; // X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
@@ -71,17 +69,17 @@ message Premise {
 }
 
 message Subject {
-	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
-	string body = 5;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	string body = 5; // @gotags: bson:"body"
 }
 
 message Predicate {
-	string id = 1;
-	google.protobuf.Timestamp created_at = 2;
-	google.protobuf.Timestamp updated_at = 3;
-	google.protobuf.Timestamp deleted_at = 4;
-	string body = 5;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	string body = 5; // @gotags: bson:"body"
 }

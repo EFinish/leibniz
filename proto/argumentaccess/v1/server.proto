@@ -1,9 +1,8 @@
 syntax = "proto3";
 
 import "argumentaccess/v1/argument.proto";
-import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/efinish/leibniz/proto/gen/go/argumentaccess/v1;argumentaccess";
+option go_package = "go/argumentaccess/v1;argumentaccess";
 
 package argumentaccess.v1;
 
