@@ -5,14 +5,14 @@ option go_package = "go/argumentaccess/v1;argumentaccess";
 package argumentaccess.v1;
 
 message Argument {
-	string id = 1;
-	string created_at = 2;
-	string updated_at = 3;
-	string deleted_at = 4;
-	string title = 5;
-    repeated Premise premises = 6;
-	repeated ConditionalStatement conditional_statements = 7;
-	Premise conclusion_premise = 8;
+	string id = 1; // @gotags: bson:"_id"
+	string created_at = 2; // @gotags: bson:"created_at"
+	string updated_at = 3; // @gotags: bson:"updated_at"
+	string deleted_at = 4; // @gotags: bson:"deleted_at"
+	string title = 5; // @gotags: bson:"title"
+    repeated Premise premises = 6; // @gotags: bson:"premises"
+	repeated ConditionalStatement conditional_statements = 7; // @gotags: bson:"conditional_statements"
+	Premise conclusion_premise = 8; // @gotags: bson:"conclusion_premise"
 }
 
 enum PropositionType{
@@ -41,10 +41,10 @@ message ConditionalStatement {
 	string created_at = 2; // @gotags: bson:"created_at"
 	string updated_at = 3; // @gotags: bson:"updated_at"
 	string deleted_at = 4; // @gotags: bson:"deleted_at"
-	Premise if_premise = 5;
-	Premise then_premise = 6;
-	Proposition if_proposition = 7;
-	Proposition then_proposition = 8;
+	Premise if_premise = 5; // @gotags: bson:"if_premise" 
+	Premise then_premise = 6; // @gotags: bson:"then_premise" 
+	Proposition if_proposition = 7; // @gotags: bson:"if_proposition" 
+	Proposition then_proposition = 8; // @gotags: bson:"then_proposition" 
 }
 
 message Proposition {
@@ -52,9 +52,9 @@ message Proposition {
 	string created_at = 2; // @gotags: bson:"created_at"
 	string updated_at = 3; // @gotags: bson:"updated_at"
 	string deleted_at = 4; // @gotags: bson:"deleted_at"
-	PropositionType proposition_type = 9;
-	repeated Premise proposition_sub_premises = 10;
-	repeated Proposition proposition_sub_propositions = 11;
+	PropositionType proposition_type = 9; // @gotags: bson:"proposition_type" 
+	repeated Premise proposition_sub_premises = 10; // @gotags: bson:"proposition_sub_premises" 
+	repeated Proposition proposition_sub_propositions = 11; // @gotags: bson:"proposition_sub_propositions" 
 }
 
 message Premise {
@@ -62,10 +62,14 @@ message Premise {
 	string created_at = 2; // @gotags: bson:"created_at"
 	string updated_at = 3; // @gotags: bson:"updated_at"
 	string deleted_at = 4; // @gotags: bson:"deleted_at"
-    Subject subject = 5; // X is Y, subject = X
-    SubjectQuantifier subject_quantifier = 6; // all X is Y, subject_quantifier = all
-    Predicate predicate = 7; // X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
-	PredicateQualifier predicate_qualifier = 8; // AKA is/is not
+    Subject subject = 5; // @gotags: bson:"subject" 
+	// X is Y, subject = X
+    SubjectQuantifier subject_quantifier = 6; // @gotags: bson:"subject_quantifier"
+	// all X is Y, subject_quantifier = all
+    Predicate predicate = 7; // @gotags: bson:"predicate"
+	// X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
+	PredicateQualifier predicate_qualifier = 8; // @gotags: bson:"predicate_qualifier"
+	// AKA is/is not
 }
 
 message Subject {

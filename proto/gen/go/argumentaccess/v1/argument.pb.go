@@ -178,14 +178,14 @@ type Argument struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                    string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	CreatedAt             string                  `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt             string                  `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt             string                  `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Title                 string                  `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
-	Premises              []*Premise              `protobuf:"bytes,6,rep,name=premises,proto3" json:"premises,omitempty"`
-	ConditionalStatements []*ConditionalStatement `protobuf:"bytes,7,rep,name=conditional_statements,json=conditionalStatements,proto3" json:"conditional_statements,omitempty"`
-	ConclusionPremise     *Premise                `protobuf:"bytes,8,opt,name=conclusion_premise,json=conclusionPremise,proto3" json:"conclusion_premise,omitempty"`
+	Id                    string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                                                    // @gotags: bson:"_id"
+	CreatedAt             string                  `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"`                                     // @gotags: bson:"created_at"
+	UpdatedAt             string                  `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"`                                     // @gotags: bson:"updated_at"
+	DeletedAt             string                  `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"`                                     // @gotags: bson:"deleted_at"
+	Title                 string                  `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty" bson:"title"`                                                              // @gotags: bson:"title"
+	Premises              []*Premise              `protobuf:"bytes,6,rep,name=premises,proto3" json:"premises,omitempty" bson:"premises"`                                                        // @gotags: bson:"premises"
+	ConditionalStatements []*ConditionalStatement `protobuf:"bytes,7,rep,name=conditional_statements,json=conditionalStatements,proto3" json:"conditional_statements,omitempty" bson:"conditional_statements"` // @gotags: bson:"conditional_statements"
+	ConclusionPremise     *Premise                `protobuf:"bytes,8,opt,name=conclusion_premise,json=conclusionPremise,proto3" json:"conclusion_premise,omitempty" bson:"conclusion_premise"`             // @gotags: bson:"conclusion_premise"
 }
 
 func (x *Argument) Reset() {
@@ -281,14 +281,14 @@ type ConditionalStatement struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              string       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // @gotags: bson:"_id"
-	CreatedAt       string       `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // @gotags: bson:"created_at"
-	UpdatedAt       string       `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // @gotags: bson:"updated_at"
-	DeletedAt       string       `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"` // @gotags: bson:"deleted_at"
-	IfPremise       *Premise     `protobuf:"bytes,5,opt,name=if_premise,json=ifPremise,proto3" json:"if_premise,omitempty"`
-	ThenPremise     *Premise     `protobuf:"bytes,6,opt,name=then_premise,json=thenPremise,proto3" json:"then_premise,omitempty"`
-	IfProposition   *Proposition `protobuf:"bytes,7,opt,name=if_proposition,json=ifProposition,proto3" json:"if_proposition,omitempty"`
-	ThenProposition *Proposition `protobuf:"bytes,8,opt,name=then_proposition,json=thenProposition,proto3" json:"then_proposition,omitempty"`
+	Id              string       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                                  // @gotags: bson:"_id"
+	CreatedAt       string       `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"`                   // @gotags: bson:"created_at"
+	UpdatedAt       string       `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"`                   // @gotags: bson:"updated_at"
+	DeletedAt       string       `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"`                   // @gotags: bson:"deleted_at"
+	IfPremise       *Premise     `protobuf:"bytes,5,opt,name=if_premise,json=ifPremise,proto3" json:"if_premise,omitempty" bson:"if_premise"`                   // @gotags: bson:"if_premise"
+	ThenPremise     *Premise     `protobuf:"bytes,6,opt,name=then_premise,json=thenPremise,proto3" json:"then_premise,omitempty" bson:"then_premise"`             // @gotags: bson:"then_premise"
+	IfProposition   *Proposition `protobuf:"bytes,7,opt,name=if_proposition,json=ifProposition,proto3" json:"if_proposition,omitempty" bson:"if_proposition"`       // @gotags: bson:"if_proposition"
+	ThenProposition *Proposition `protobuf:"bytes,8,opt,name=then_proposition,json=thenProposition,proto3" json:"then_proposition,omitempty" bson:"then_proposition"` // @gotags: bson:"then_proposition"
 }
 
 func (x *ConditionalStatement) Reset() {
@@ -384,13 +384,13 @@ type Proposition struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                         string          `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // @gotags: bson:"_id"
-	CreatedAt                  string          `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // @gotags: bson:"created_at"
-	UpdatedAt                  string          `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // @gotags: bson:"updated_at"
-	DeletedAt                  string          `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"` // @gotags: bson:"deleted_at"
-	PropositionType            PropositionType `protobuf:"varint,9,opt,name=proposition_type,json=propositionType,proto3,enum=argumentaccess.v1.PropositionType" json:"proposition_type,omitempty"`
-	PropositionSubPremises     []*Premise      `protobuf:"bytes,10,rep,name=proposition_sub_premises,json=propositionSubPremises,proto3" json:"proposition_sub_premises,omitempty"`
-	PropositionSubPropositions []*Proposition  `protobuf:"bytes,11,rep,name=proposition_sub_propositions,json=propositionSubPropositions,proto3" json:"proposition_sub_propositions,omitempty"`
+	Id                         string          `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                                                                          // @gotags: bson:"_id"
+	CreatedAt                  string          `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"`                                                           // @gotags: bson:"created_at"
+	UpdatedAt                  string          `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"`                                                           // @gotags: bson:"updated_at"
+	DeletedAt                  string          `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"`                                                           // @gotags: bson:"deleted_at"
+	PropositionType            PropositionType `protobuf:"varint,9,opt,name=proposition_type,json=propositionType,proto3,enum=argumentaccess.v1.PropositionType" json:"proposition_type,omitempty" bson:"proposition_type"` // @gotags: bson:"proposition_type"
+	PropositionSubPremises     []*Premise      `protobuf:"bytes,10,rep,name=proposition_sub_premises,json=propositionSubPremises,proto3" json:"proposition_sub_premises,omitempty" bson:"proposition_sub_premises"`                 // @gotags: bson:"proposition_sub_premises"
+	PropositionSubPropositions []*Proposition  `protobuf:"bytes,11,rep,name=proposition_sub_propositions,json=propositionSubPropositions,proto3" json:"proposition_sub_propositions,omitempty" bson:"proposition_sub_propositions"`     // @gotags: bson:"proposition_sub_propositions"
 }
 
 func (x *Proposition) Reset() {
@@ -479,14 +479,17 @@ type Premise struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                 string             `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                                                                                      // @gotags: bson:"_id"
-	CreatedAt          string             `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                                                                       // @gotags: bson:"created_at"
-	UpdatedAt          string             `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`                                                                       // @gotags: bson:"updated_at"
-	DeletedAt          string             `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`                                                                       // @gotags: bson:"deleted_at"
-	Subject            *Subject           `protobuf:"bytes,5,opt,name=subject,proto3" json:"subject,omitempty"`                                                                                            // X is Y, subject = X
-	SubjectQuantifier  SubjectQuantifier  `protobuf:"varint,6,opt,name=subject_quantifier,json=subjectQuantifier,proto3,enum=argumentaccess.v1.SubjectQuantifier" json:"subject_quantifier,omitempty"`     // all X is Y, subject_quantifier = all
-	Predicate          *Predicate         `protobuf:"bytes,7,opt,name=predicate,proto3" json:"predicate,omitempty"`                                                                                        // X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
-	PredicateQualifier PredicateQualifier `protobuf:"varint,8,opt,name=predicate_qualifier,json=predicateQualifier,proto3,enum=argumentaccess.v1.PredicateQualifier" json:"predicate_qualifier,omitempty"` // AKA is/is not
+	Id        string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                // @gotags: bson:"_id"
+	CreatedAt string   `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"` // @gotags: bson:"created_at"
+	UpdatedAt string   `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"` // @gotags: bson:"updated_at"
+	DeletedAt string   `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"` // @gotags: bson:"deleted_at"
+	Subject   *Subject `protobuf:"bytes,5,opt,name=subject,proto3" json:"subject,omitempty" bson:"subject"`                      // @gotags: bson:"subject"
+	// X is Y, subject = X
+	SubjectQuantifier SubjectQuantifier `protobuf:"varint,6,opt,name=subject_quantifier,json=subjectQuantifier,proto3,enum=argumentaccess.v1.SubjectQuantifier" json:"subject_quantifier,omitempty" bson:"subject_quantifier"` // @gotags: bson:"subject_quantifier"
+	// all X is Y, subject_quantifier = all
+	Predicate *Predicate `protobuf:"bytes,7,opt,name=predicate,proto3" json:"predicate,omitempty" bson:"predicate"` // @gotags: bson:"predicate"
+	// X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
+	PredicateQualifier PredicateQualifier `protobuf:"varint,8,opt,name=predicate_qualifier,json=predicateQualifier,proto3,enum=argumentaccess.v1.PredicateQualifier" json:"predicate_qualifier,omitempty" bson:"predicate_qualifier"` // @gotags: bson:"predicate_qualifier"
 }
 
 func (x *Premise) Reset() {
@@ -582,11 +585,11 @@ type Subject struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // @gotags: bson:"_id"
-	CreatedAt string `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // @gotags: bson:"created_at"
-	UpdatedAt string `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // @gotags: bson:"updated_at"
-	DeletedAt string `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"` // @gotags: bson:"deleted_at"
-	Body      string `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`                            // @gotags: bson:"body"
+	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                // @gotags: bson:"_id"
+	CreatedAt string `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"` // @gotags: bson:"created_at"
+	UpdatedAt string `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"` // @gotags: bson:"updated_at"
+	DeletedAt string `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"` // @gotags: bson:"deleted_at"
+	Body      string `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty" bson:"body"`                            // @gotags: bson:"body"
 }
 
 func (x *Subject) Reset() {
@@ -661,11 +664,11 @@ type Predicate struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // @gotags: bson:"_id"
-	CreatedAt string `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // @gotags: bson:"created_at"
-	UpdatedAt string `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // @gotags: bson:"updated_at"
-	DeletedAt string `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"` // @gotags: bson:"deleted_at"
-	Body      string `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`                            // @gotags: bson:"body"
+	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`                                // @gotags: bson:"_id"
+	CreatedAt string `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" bson:"created_at"` // @gotags: bson:"created_at"
+	UpdatedAt string `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" bson:"updated_at"` // @gotags: bson:"updated_at"
+	DeletedAt string `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty" bson:"deleted_at"` // @gotags: bson:"deleted_at"
+	Body      string `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty" bson:"body"`                            // @gotags: bson:"body"
 }
 
 func (x *Predicate) Reset() {
