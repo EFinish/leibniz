@@ -18,13 +18,12 @@ message Argument {
 }
 
 enum PropositionType{
-	JUSTAPREMISE = 0;
-    AND = 1;
-    OR = 2;
-    NAND = 3;
-    NOR = 4;
-    XOR = 5;
-    XNOR = 6;
+    AND = 0;
+    OR = 1;
+    NAND = 2;
+    NOR = 3;
+    XOR = 4;
+    XNOR = 5;
  }
 
  enum SubjectQuantifier{
@@ -46,6 +45,18 @@ message ConditionalStatement {
 	google.protobuf.Timestamp deleted_at = 4;
 	Premise if_premise = 5;
 	Premise then_premise = 6;
+	Proposition if_proposition = 7;
+	Proposition then_proposition = 8;
+}
+
+message Proposition {
+	string id = 1;
+	google.protobuf.Timestamp created_at = 2;
+	google.protobuf.Timestamp updated_at = 3;
+	google.protobuf.Timestamp deleted_at = 4;
+	PropositionType proposition_type = 9;
+	repeated Premise proposition_sub_premises = 10;
+	repeated Proposition proposition_sub_propositions = 11;
 }
 
 message Premise {
@@ -56,9 +67,7 @@ message Premise {
     Subject subject = 5; // X is Y, subject = X
     SubjectQuantifier subject_quantifier = 6; // all X is Y, subject_quantifier = all
     Predicate predicate = 7; // X is Y, predicate = Y, premises should have EITHER a subject and a predicate OR subpremises
-	PredicateQualifier predicate_qualifier = 8;
-	PropositionType proposition_type = 9;
-	repeated Premise proposition_sub_premises = 10;
+	PredicateQualifier predicate_qualifier = 8; // AKA is/is not
 }
 
 message Subject {
