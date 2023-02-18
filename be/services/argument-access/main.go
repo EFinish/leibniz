@@ -12,9 +12,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
+	"github.com/EFinish/leibniz/be/services/argument-access/config"
+	logger "github.com/EFinish/leibniz/be/utilities/logger"
 	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
-	"github.com/EFinish/leibniz/services/argument-access/config"
-	logger "github.com/EFinish/leibniz/utilities/logger"
 )
 
 type (

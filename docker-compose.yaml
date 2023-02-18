@@ -10,11 +10,11 @@ services:
   argument-access:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: be/Dockerfile
     init: true
-    command: sh -c "cd ./services/argument-access && air"
+    command: sh -c "cd ./be/services/argument-access && air"
     env_file:
-        - ././services/argument-access/.env.prod
+        - ././be/services/argument-access/.env.prod
     ports:
       - "9002:9002"
     volumes:
