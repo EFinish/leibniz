@@ -12,9 +12,9 @@ import (
 
 type ArgumentJSONConvertable struct {
 	ID        primitive.ObjectID `bson:"_id,omitempty"`
-	CreatedAt string             `bson:"created_at,omitempty"`
-	UpdatedAt string             `bson:"updated_at,omitempty"`
-	DeletedAt string             `bson:"deleted_at,omitempty"`
+	CreatedAt primitive.ObjectID `bson:"created_at,omitempty"`
+	UpdatedAt primitive.ObjectID `bson:"updated_at,omitempty"`
+	DeletedAt primitive.ObjectID `bson:"deleted_at,omitempty"`
 	Title     string             `bson:"title,omitempty"`
 	// Premises          string             `bson:"premises,omitempty"`
 	// ConclusionPremise string             `bson:"conclusion_premise,omitempty"`

@@ -6,50 +6,11 @@ import (
 	"time"
 
 	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
-	conversion "github.com/EFinish/leibniz/utilities/conversion"
-	"google.golang.org/protobuf/types/known/timestamppb"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"gopkg.in/mgo.v2/bson"
 )
-
-type PredicateJsonConvertable struct {
-	ID        primitive.ObjectID `bson:"_id,omitempty"`
-	CreatedAt string             `bson:"created_at,omitempty"`
-	UpdatedAt string             `bson:"updated_at,omitempty"`
-	DeletedAt string             `bson:"deleted_at,omitempty"`
-	Body      string             `bson:"body,omitempty"`
-}
-
-func (s *PredicateJsonConvertable) toProto() (*protoOut.Predicate, error) {
-	// TODO figure out format of datetimes from mongodb
-	createdAt, err := conversion.StringToTimestamp(s.CreatedAt, "TODO")
-
-	if err != nil {
-		return nil, fmt.Errorf("getting created at timestamp for predicate: %w", err)
-	}
-
-	updatedAt, err := conversion.StringToTimestamp(s.UpdatedAt, "TODO")
-
-	if err != nil {
-		return nil, fmt.Errorf("getting updated at timestamp for predicate: %w", err)
-	}
-
-	deletedAt, err := conversion.StringToTimestamp(s.DeletedAt, "TODO")
-
-	if err != nil {
-		return nil, fmt.Errorf("getting deleted at timestamp for predicate: %w", err)
-	}
-
-	return &protoOut.Predicate{
-		Id:        s.ID.Hex(),
-		CreatedAt: createdAt,
-		UpdatedAt: updatedAt,
-		DeletedAt: deletedAt,
-		Body:      s.Body,
-	}, nil
-}
 
 func insertPredicate(ctx context.Context, predicate *protoOut.Predicate) (insertedPredicate *protoOut.Predicate, err error) {
 	insertPredicate := bson.M{
@@ -93,7 +54,7 @@ func getPredicates(ctx context.Context, PredicateID string) ([]*protoOut.Predica
 		return nil, fmt.Errorf("MongoDb error: %w", err)
 	}
 
-	found := []PredicateJsonConvertable{}
+	found := []protoOut.Predicate{}
 	err = cursor.All(ctx, &found)
 
 	if err != nil {
@@ -102,28 +63,7 @@ func getPredicates(ctx context.Context, PredicateID string) ([]*protoOut.Predica
 
 	var preds []*protoOut.Predicate
 	for _, pred := range found {
-		created, err := time.Parse(time.RFC3339, pred.CreatedAt)
-		if err != nil {
-			return nil, fmt.Errorf("while parsing createdat: %w", err)
-		}
-
-		updated, err := time.Parse(time.RFC3339, pred.UpdatedAt)
-		if err != nil {
-			return nil, fmt.Errorf("while parsing updatedat: %w", err)
-		}
-
-		deleted, err := time.Parse(time.RFC3339, pred.DeletedAt)
-		if err != nil {
-			return nil, fmt.Errorf("while parsing deletedat: %w", err)
-		}
-
-		preds = append(preds, &protoOut.Predicate{
-			Id:        pred.ID.Hex(),
-			CreatedAt: timestamppb.New(created),
-			UpdatedAt: timestamppb.New(updated),
-			DeletedAt: timestamppb.New(deleted),
-			Body:      pred.Body,
-		})
+		preds = append(preds, &pred)
 	}
 
 	return preds, nil
@@ -153,20 +93,14 @@ func updatePredicate(ctx context.Context, Predicate *protoOut.Predicate) (*proto
 		ReturnDocument: &returnDoc,
 		Upsert:         &upsert,
 	}
-	vehicle := PredicateJsonConvertable{}
+	vehicle := protoOut.Predicate{}
 	err = aa.predicatesCollection.FindOneAndUpdate(ctx, filter, update, &opt).Decode(&vehicle)
 
 	if err != nil {
 		return nil, fmt.Errorf("in FindOneAndUpdate: %w", err)
 	}
 
-	protoPredicate, err := vehicle.toProto()
-
-	if err != nil {
-		return nil, fmt.Errorf("during protoification: %w", err)
-	}
-
-	return protoPredicate, nil
+	return &vehicle, nil
 }
 
 func deletePredicate(ctx context.Context, PredicateId string) (*int64, error) {
