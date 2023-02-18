@@ -1,6 +1,6 @@
 generate:
-	rm -rf ./gen/*
-	protoc -I=. --go-grpc_out=./gen/ --go_out=./gen/ **/**/*.proto
+	rm -rf ./gen/go/* && rm -rf ./gen/ts/*
+	protoc -I=. --go-grpc_out=./gen/ --go_out=./gen/ --ts_out=./gen/ts/ **/**/*.proto
 	protoc-go-inject-tag -input="./gen/go/**/**/*.pb.go"
 
 lint:
@@ -15,3 +15,5 @@ install:
 		github.com/ckaznocha/protoc-gen-lint \
 		github.com/favadi/protoc-go-inject-tag
 	sudo apt install protobuf-compiler
+	npm install -g protoc-gen-ts@next
+
