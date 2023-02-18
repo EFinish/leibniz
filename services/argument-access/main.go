@@ -19,12 +19,14 @@ import (
 
 type (
 	argumentAccess struct {
-		conf                 *config.Config
-		logger               logger.LeibnizLogger
-		argumentsCollection  *mongo.Collection
-		premisesCollection   *mongo.Collection
-		subjectsCollection   *mongo.Collection
-		predicatesCollection *mongo.Collection
+		conf                            *config.Config
+		logger                          logger.LeibnizLogger
+		premisesCollection              *mongo.Collection
+		subjectsCollection              *mongo.Collection
+		predicatesCollection            *mongo.Collection
+		propositionsCollection          *mongo.Collection
+		conditionalStatementsCollection *mongo.Collection
+		argumentsCollection             *mongo.Collection
 	}
 	ArgumentAccessServiceServer struct {
 		protoOut.UnimplementedArgumentAccessServer
@@ -71,10 +73,12 @@ func main() {
 
 	fmt.Println("connected to mongo DB for argument database")
 
-	aa.argumentsCollection = dbClient.Database("argument").Collection("arguments")
 	aa.premisesCollection = dbClient.Database("argument").Collection("premises")
 	aa.subjectsCollection = dbClient.Database("argument").Collection("subjects")
 	aa.predicatesCollection = dbClient.Database("argument").Collection("predicates")
+	aa.propositionsCollection = dbClient.Database("argument").Collection("propositions")
+	aa.conditionalStatementsCollection = dbClient.Database("argument").Collection("conditional_statements")
+	aa.argumentsCollection = dbClient.Database("argument").Collection("arguments")
 
 	fmt.Printf("Listening on port %v\n", conf.GrpcPort)
 
