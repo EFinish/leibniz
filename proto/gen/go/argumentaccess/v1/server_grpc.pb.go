@@ -32,6 +32,22 @@ type ArgumentAccessClient interface {
 	ReadPredicate(ctx context.Context, in *ReadPredicateRequest, opts ...grpc.CallOption) (*ReadPredicateResponse, error)
 	UpdatePredicate(ctx context.Context, in *UpdatePredicateRequest, opts ...grpc.CallOption) (*UpdatePredicateResponse, error)
 	DeletePredicate(ctx context.Context, in *DeletePredicateRequest, opts ...grpc.CallOption) (*DeletePredicateResponse, error)
+	CreatePremise(ctx context.Context, in *CreatePremiseRequest, opts ...grpc.CallOption) (*CreatePremiseResponse, error)
+	ReadPremise(ctx context.Context, in *ReadPremiseRequest, opts ...grpc.CallOption) (*ReadPremiseResponse, error)
+	UpdatePremise(ctx context.Context, in *UpdatePremiseRequest, opts ...grpc.CallOption) (*UpdatePremiseResponse, error)
+	DeletePremise(ctx context.Context, in *DeletePremiseRequest, opts ...grpc.CallOption) (*DeletePremiseResponse, error)
+	CreateProposition(ctx context.Context, in *CreatePropositionRequest, opts ...grpc.CallOption) (*CreatePropositionResponse, error)
+	ReadProposition(ctx context.Context, in *ReadPropositionRequest, opts ...grpc.CallOption) (*ReadPropositionResponse, error)
+	UpdateProposition(ctx context.Context, in *UpdatePropositionRequest, opts ...grpc.CallOption) (*UpdatePropositionResponse, error)
+	DeleteProposition(ctx context.Context, in *DeletePropositionRequest, opts ...grpc.CallOption) (*DeletePropositionResponse, error)
+	CreateConditionalStatement(ctx context.Context, in *CreateConditionalStatementRequest, opts ...grpc.CallOption) (*CreateConditionalStatementResponse, error)
+	ReadConditionalStatement(ctx context.Context, in *ReadConditionalStatementRequest, opts ...grpc.CallOption) (*ReadConditionalStatementResponse, error)
+	UpdateConditionalStatement(ctx context.Context, in *UpdateConditionalStatementRequest, opts ...grpc.CallOption) (*UpdateConditionalStatementResponse, error)
+	DeleteConditionalStatement(ctx context.Context, in *DeleteConditionalStatementRequest, opts ...grpc.CallOption) (*DeleteConditionalStatementResponse, error)
+	CreateArgument(ctx context.Context, in *CreateArgumentRequest, opts ...grpc.CallOption) (*CreateArgumentResponse, error)
+	ReadArgument(ctx context.Context, in *ReadArgumentRequest, opts ...grpc.CallOption) (*ReadArgumentResponse, error)
+	UpdateArgument(ctx context.Context, in *UpdateArgumentRequest, opts ...grpc.CallOption) (*UpdateArgumentResponse, error)
+	DeleteArgument(ctx context.Context, in *DeleteArgumentRequest, opts ...grpc.CallOption) (*DeleteArgumentResponse, error)
 }
 
 type argumentAccessClient struct {
@@ -155,6 +171,150 @@ func (c *argumentAccessClient) DeletePredicate(ctx context.Context, in *DeletePr
 	return out, nil
 }
 
+func (c *argumentAccessClient) CreatePremise(ctx context.Context, in *CreatePremiseRequest, opts ...grpc.CallOption) (*CreatePremiseResponse, error) {
+	out := new(CreatePremiseResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreatePremise", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) ReadPremise(ctx context.Context, in *ReadPremiseRequest, opts ...grpc.CallOption) (*ReadPremiseResponse, error) {
+	out := new(ReadPremiseResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadPremise", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) UpdatePremise(ctx context.Context, in *UpdatePremiseRequest, opts ...grpc.CallOption) (*UpdatePremiseResponse, error) {
+	out := new(UpdatePremiseResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdatePremise", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) DeletePremise(ctx context.Context, in *DeletePremiseRequest, opts ...grpc.CallOption) (*DeletePremiseResponse, error) {
+	out := new(DeletePremiseResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeletePremise", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) CreateProposition(ctx context.Context, in *CreatePropositionRequest, opts ...grpc.CallOption) (*CreatePropositionResponse, error) {
+	out := new(CreatePropositionResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreateProposition", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) ReadProposition(ctx context.Context, in *ReadPropositionRequest, opts ...grpc.CallOption) (*ReadPropositionResponse, error) {
+	out := new(ReadPropositionResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadProposition", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) UpdateProposition(ctx context.Context, in *UpdatePropositionRequest, opts ...grpc.CallOption) (*UpdatePropositionResponse, error) {
+	out := new(UpdatePropositionResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdateProposition", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) DeleteProposition(ctx context.Context, in *DeletePropositionRequest, opts ...grpc.CallOption) (*DeletePropositionResponse, error) {
+	out := new(DeletePropositionResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeleteProposition", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) CreateConditionalStatement(ctx context.Context, in *CreateConditionalStatementRequest, opts ...grpc.CallOption) (*CreateConditionalStatementResponse, error) {
+	out := new(CreateConditionalStatementResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreateConditionalStatement", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) ReadConditionalStatement(ctx context.Context, in *ReadConditionalStatementRequest, opts ...grpc.CallOption) (*ReadConditionalStatementResponse, error) {
+	out := new(ReadConditionalStatementResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadConditionalStatement", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) UpdateConditionalStatement(ctx context.Context, in *UpdateConditionalStatementRequest, opts ...grpc.CallOption) (*UpdateConditionalStatementResponse, error) {
+	out := new(UpdateConditionalStatementResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdateConditionalStatement", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) DeleteConditionalStatement(ctx context.Context, in *DeleteConditionalStatementRequest, opts ...grpc.CallOption) (*DeleteConditionalStatementResponse, error) {
+	out := new(DeleteConditionalStatementResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeleteConditionalStatement", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) CreateArgument(ctx context.Context, in *CreateArgumentRequest, opts ...grpc.CallOption) (*CreateArgumentResponse, error) {
+	out := new(CreateArgumentResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/CreateArgument", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) ReadArgument(ctx context.Context, in *ReadArgumentRequest, opts ...grpc.CallOption) (*ReadArgumentResponse, error) {
+	out := new(ReadArgumentResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/ReadArgument", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) UpdateArgument(ctx context.Context, in *UpdateArgumentRequest, opts ...grpc.CallOption) (*UpdateArgumentResponse, error) {
+	out := new(UpdateArgumentResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/UpdateArgument", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *argumentAccessClient) DeleteArgument(ctx context.Context, in *DeleteArgumentRequest, opts ...grpc.CallOption) (*DeleteArgumentResponse, error) {
+	out := new(DeleteArgumentResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeleteArgument", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ArgumentAccessServer is the server API for ArgumentAccess service.
 // All implementations must embed UnimplementedArgumentAccessServer
 // for forward compatibility
@@ -169,6 +329,22 @@ type ArgumentAccessServer interface {
 	ReadPredicate(context.Context, *ReadPredicateRequest) (*ReadPredicateResponse, error)
 	UpdatePredicate(context.Context, *UpdatePredicateRequest) (*UpdatePredicateResponse, error)
 	DeletePredicate(context.Context, *DeletePredicateRequest) (*DeletePredicateResponse, error)
+	CreatePremise(context.Context, *CreatePremiseRequest) (*CreatePremiseResponse, error)
+	ReadPremise(context.Context, *ReadPremiseRequest) (*ReadPremiseResponse, error)
+	UpdatePremise(context.Context, *UpdatePremiseRequest) (*UpdatePremiseResponse, error)
+	DeletePremise(context.Context, *DeletePremiseRequest) (*DeletePremiseResponse, error)
+	CreateProposition(context.Context, *CreatePropositionRequest) (*CreatePropositionResponse, error)
+	ReadProposition(context.Context, *ReadPropositionRequest) (*ReadPropositionResponse, error)
+	UpdateProposition(context.Context, *UpdatePropositionRequest) (*UpdatePropositionResponse, error)
+	DeleteProposition(context.Context, *DeletePropositionRequest) (*DeletePropositionResponse, error)
+	CreateConditionalStatement(context.Context, *CreateConditionalStatementRequest) (*CreateConditionalStatementResponse, error)
+	ReadConditionalStatement(context.Context, *ReadConditionalStatementRequest) (*ReadConditionalStatementResponse, error)
+	UpdateConditionalStatement(context.Context, *UpdateConditionalStatementRequest) (*UpdateConditionalStatementResponse, error)
+	DeleteConditionalStatement(context.Context, *DeleteConditionalStatementRequest) (*DeleteConditionalStatementResponse, error)
+	CreateArgument(context.Context, *CreateArgumentRequest) (*CreateArgumentResponse, error)
+	ReadArgument(context.Context, *ReadArgumentRequest) (*ReadArgumentResponse, error)
+	UpdateArgument(context.Context, *UpdateArgumentRequest) (*UpdateArgumentResponse, error)
+	DeleteArgument(context.Context, *DeleteArgumentRequest) (*DeleteArgumentResponse, error)
 	mustEmbedUnimplementedArgumentAccessServer()
 }
 
@@ -205,6 +381,54 @@ func (UnimplementedArgumentAccessServer) UpdatePredicate(context.Context, *Updat
 }
 func (UnimplementedArgumentAccessServer) DeletePredicate(context.Context, *DeletePredicateRequest) (*DeletePredicateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePredicate not implemented")
+}
+func (UnimplementedArgumentAccessServer) CreatePremise(context.Context, *CreatePremiseRequest) (*CreatePremiseResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePremise not implemented")
+}
+func (UnimplementedArgumentAccessServer) ReadPremise(context.Context, *ReadPremiseRequest) (*ReadPremiseResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadPremise not implemented")
+}
+func (UnimplementedArgumentAccessServer) UpdatePremise(context.Context, *UpdatePremiseRequest) (*UpdatePremiseResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePremise not implemented")
+}
+func (UnimplementedArgumentAccessServer) DeletePremise(context.Context, *DeletePremiseRequest) (*DeletePremiseResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePremise not implemented")
+}
+func (UnimplementedArgumentAccessServer) CreateProposition(context.Context, *CreatePropositionRequest) (*CreatePropositionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProposition not implemented")
+}
+func (UnimplementedArgumentAccessServer) ReadProposition(context.Context, *ReadPropositionRequest) (*ReadPropositionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadProposition not implemented")
+}
+func (UnimplementedArgumentAccessServer) UpdateProposition(context.Context, *UpdatePropositionRequest) (*UpdatePropositionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProposition not implemented")
+}
+func (UnimplementedArgumentAccessServer) DeleteProposition(context.Context, *DeletePropositionRequest) (*DeletePropositionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProposition not implemented")
+}
+func (UnimplementedArgumentAccessServer) CreateConditionalStatement(context.Context, *CreateConditionalStatementRequest) (*CreateConditionalStatementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateConditionalStatement not implemented")
+}
+func (UnimplementedArgumentAccessServer) ReadConditionalStatement(context.Context, *ReadConditionalStatementRequest) (*ReadConditionalStatementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadConditionalStatement not implemented")
+}
+func (UnimplementedArgumentAccessServer) UpdateConditionalStatement(context.Context, *UpdateConditionalStatementRequest) (*UpdateConditionalStatementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConditionalStatement not implemented")
+}
+func (UnimplementedArgumentAccessServer) DeleteConditionalStatement(context.Context, *DeleteConditionalStatementRequest) (*DeleteConditionalStatementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteConditionalStatement not implemented")
+}
+func (UnimplementedArgumentAccessServer) CreateArgument(context.Context, *CreateArgumentRequest) (*CreateArgumentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateArgument not implemented")
+}
+func (UnimplementedArgumentAccessServer) ReadArgument(context.Context, *ReadArgumentRequest) (*ReadArgumentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadArgument not implemented")
+}
+func (UnimplementedArgumentAccessServer) UpdateArgument(context.Context, *UpdateArgumentRequest) (*UpdateArgumentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateArgument not implemented")
+}
+func (UnimplementedArgumentAccessServer) DeleteArgument(context.Context, *DeleteArgumentRequest) (*DeleteArgumentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteArgument not implemented")
 }
 func (UnimplementedArgumentAccessServer) mustEmbedUnimplementedArgumentAccessServer() {}
 
@@ -402,6 +626,294 @@ func _ArgumentAccess_DeletePredicate_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ArgumentAccess_CreatePremise_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePremiseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).CreatePremise(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreatePremise",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).CreatePremise(ctx, req.(*CreatePremiseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_ReadPremise_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadPremiseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).ReadPremise(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadPremise",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).ReadPremise(ctx, req.(*ReadPremiseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_UpdatePremise_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePremiseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).UpdatePremise(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdatePremise",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).UpdatePremise(ctx, req.(*UpdatePremiseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_DeletePremise_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePremiseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).DeletePremise(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeletePremise",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).DeletePremise(ctx, req.(*DeletePremiseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_CreateProposition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePropositionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).CreateProposition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreateProposition",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).CreateProposition(ctx, req.(*CreatePropositionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_ReadProposition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadPropositionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).ReadProposition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadProposition",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).ReadProposition(ctx, req.(*ReadPropositionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_UpdateProposition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePropositionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).UpdateProposition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdateProposition",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).UpdateProposition(ctx, req.(*UpdatePropositionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_DeleteProposition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePropositionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).DeleteProposition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeleteProposition",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).DeleteProposition(ctx, req.(*DeletePropositionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_CreateConditionalStatement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateConditionalStatementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).CreateConditionalStatement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreateConditionalStatement",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).CreateConditionalStatement(ctx, req.(*CreateConditionalStatementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_ReadConditionalStatement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadConditionalStatementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).ReadConditionalStatement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadConditionalStatement",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).ReadConditionalStatement(ctx, req.(*ReadConditionalStatementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_UpdateConditionalStatement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateConditionalStatementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).UpdateConditionalStatement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdateConditionalStatement",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).UpdateConditionalStatement(ctx, req.(*UpdateConditionalStatementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_DeleteConditionalStatement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteConditionalStatementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).DeleteConditionalStatement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeleteConditionalStatement",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).DeleteConditionalStatement(ctx, req.(*DeleteConditionalStatementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_CreateArgument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateArgumentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).CreateArgument(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/CreateArgument",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).CreateArgument(ctx, req.(*CreateArgumentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_ReadArgument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadArgumentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).ReadArgument(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/ReadArgument",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).ReadArgument(ctx, req.(*ReadArgumentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_UpdateArgument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateArgumentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).UpdateArgument(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/UpdateArgument",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).UpdateArgument(ctx, req.(*UpdateArgumentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArgumentAccess_DeleteArgument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteArgumentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArgumentAccessServer).DeleteArgument(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeleteArgument",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArgumentAccessServer).DeleteArgument(ctx, req.(*DeleteArgumentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ArgumentAccess_ServiceDesc is the grpc.ServiceDesc for ArgumentAccess service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -444,6 +956,70 @@ var ArgumentAccess_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeletePredicate",
 			Handler:    _ArgumentAccess_DeletePredicate_Handler,
+		},
+		{
+			MethodName: "CreatePremise",
+			Handler:    _ArgumentAccess_CreatePremise_Handler,
+		},
+		{
+			MethodName: "ReadPremise",
+			Handler:    _ArgumentAccess_ReadPremise_Handler,
+		},
+		{
+			MethodName: "UpdatePremise",
+			Handler:    _ArgumentAccess_UpdatePremise_Handler,
+		},
+		{
+			MethodName: "DeletePremise",
+			Handler:    _ArgumentAccess_DeletePremise_Handler,
+		},
+		{
+			MethodName: "CreateProposition",
+			Handler:    _ArgumentAccess_CreateProposition_Handler,
+		},
+		{
+			MethodName: "ReadProposition",
+			Handler:    _ArgumentAccess_ReadProposition_Handler,
+		},
+		{
+			MethodName: "UpdateProposition",
+			Handler:    _ArgumentAccess_UpdateProposition_Handler,
+		},
+		{
+			MethodName: "DeleteProposition",
+			Handler:    _ArgumentAccess_DeleteProposition_Handler,
+		},
+		{
+			MethodName: "CreateConditionalStatement",
+			Handler:    _ArgumentAccess_CreateConditionalStatement_Handler,
+		},
+		{
+			MethodName: "ReadConditionalStatement",
+			Handler:    _ArgumentAccess_ReadConditionalStatement_Handler,
+		},
+		{
+			MethodName: "UpdateConditionalStatement",
+			Handler:    _ArgumentAccess_UpdateConditionalStatement_Handler,
+		},
+		{
+			MethodName: "DeleteConditionalStatement",
+			Handler:    _ArgumentAccess_DeleteConditionalStatement_Handler,
+		},
+		{
+			MethodName: "CreateArgument",
+			Handler:    _ArgumentAccess_CreateArgument_Handler,
+		},
+		{
+			MethodName: "ReadArgument",
+			Handler:    _ArgumentAccess_ReadArgument_Handler,
+		},
+		{
+			MethodName: "UpdateArgument",
+			Handler:    _ArgumentAccess_UpdateArgument_Handler,
+		},
+		{
+			MethodName: "DeleteArgument",
+			Handler:    _ArgumentAccess_DeleteArgument_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

@@ -19,6 +19,26 @@ service ArgumentAccess {
     rpc ReadPredicate (ReadPredicateRequest) returns (ReadPredicateResponse) {}
     rpc UpdatePredicate (UpdatePredicateRequest) returns (UpdatePredicateResponse) {}
     rpc DeletePredicate (DeletePredicateRequest) returns (DeletePredicateResponse) {}
+
+	rpc CreatePremise (CreatePremiseRequest) returns (CreatePremiseResponse) {}
+    rpc ReadPremise (ReadPremiseRequest) returns (ReadPremiseResponse) {}
+    rpc UpdatePremise (UpdatePremiseRequest) returns (UpdatePremiseResponse) {}
+    rpc DeletePremise (DeletePremiseRequest) returns (DeletePremiseResponse) {}
+
+	rpc CreateProposition (CreatePropositionRequest) returns (CreatePropositionResponse) {}
+    rpc ReadProposition (ReadPropositionRequest) returns (ReadPropositionResponse) {}
+    rpc UpdateProposition (UpdatePropositionRequest) returns (UpdatePropositionResponse) {}
+    rpc DeleteProposition (DeletePropositionRequest) returns (DeletePropositionResponse) {}
+
+	rpc CreateConditionalStatement (CreateConditionalStatementRequest) returns (CreateConditionalStatementResponse) {}
+    rpc ReadConditionalStatement (ReadConditionalStatementRequest) returns (ReadConditionalStatementResponse) {}
+    rpc UpdateConditionalStatement (UpdateConditionalStatementRequest) returns (UpdateConditionalStatementResponse) {}
+    rpc DeleteConditionalStatement (DeleteConditionalStatementRequest) returns (DeleteConditionalStatementResponse) {}
+
+	rpc CreateArgument (CreateArgumentRequest) returns (CreateArgumentResponse) {}
+    rpc ReadArgument (ReadArgumentRequest) returns (ReadArgumentResponse) {}
+    rpc UpdateArgument (UpdateArgumentRequest) returns (UpdateArgumentResponse) {}
+    rpc DeleteArgument (DeleteArgumentRequest) returns (DeleteArgumentResponse) {}
 }
 
 message HealthCheckRequest {
@@ -33,6 +53,38 @@ message HealthCheckResponse {
 	  SERVICE_UNKNOWN = 3;  // Used only by the Watch method.
 	}
 	ServingStatus status = 1;
+}
+
+message CreateSubjectRequest {
+	Subject subject = 1;
+}
+
+message CreateSubjectResponse {
+	Subject subject = 1;
+}
+
+message ReadSubjectRequest {
+	string subject_id = 1;
+}
+
+message ReadSubjectResponse {
+	repeated Subject subjects = 1;
+}
+
+message UpdateSubjectRequest {
+	Subject subject = 1;
+}
+
+message UpdateSubjectResponse {
+	Subject subject = 1;
+}
+
+message DeleteSubjectRequest {
+	string subject_id = 1;
+}
+
+message DeleteSubjectResponse {
+	int64 deleted_count = 1;
 }
 
 message CreatePredicateRequest {
@@ -67,34 +119,130 @@ message DeletePredicateResponse {
 	int64 deleted_count = 1;
 }
 
-message CreateSubjectRequest {
-	Subject subject = 1;
+message CreatePremiseRequest {
+	Premise premise = 1;
 }
 
-message CreateSubjectResponse {
-	Subject subject = 1;
+message CreatePremiseResponse {
+	Premise premise = 1;
 }
 
-message ReadSubjectRequest {
-	string subject_id = 1;
+message ReadPremiseRequest {
+	string premise_id = 1;
 }
 
-message ReadSubjectResponse {
-	repeated Subject subjects = 1;
+message ReadPremiseResponse {
+	repeated Premise premises = 1;
 }
 
-message UpdateSubjectRequest {
-	Subject subject = 1;
+message UpdatePremiseRequest {
+	Premise premise = 1;
 }
 
-message UpdateSubjectResponse {
-	Subject subject = 1;
+message UpdatePremiseResponse {
+	Premise premise = 1;
 }
 
-message DeleteSubjectRequest {
-	string subject_id = 1;
+message DeletePremiseRequest {
+	string premise_id = 1;
 }
 
-message DeleteSubjectResponse {
+message DeletePremiseResponse {
+	int64 deleted_count = 1;
+}
+
+message CreatePropositionRequest {
+	Proposition proposition = 1;
+}
+
+message CreatePropositionResponse {
+	Proposition proposition = 1;
+}
+
+message ReadPropositionRequest {
+	string proposition_id = 1;
+}
+
+message ReadPropositionResponse {
+	repeated Proposition propositions = 1;
+}
+
+message UpdatePropositionRequest {
+	Proposition proposition = 1;
+}
+
+message UpdatePropositionResponse {
+	Proposition proposition = 1;
+}
+
+message DeletePropositionRequest {
+	string proposition_id = 1;
+}
+
+message DeletePropositionResponse {
+	int64 deleted_count = 1;
+}
+
+message CreateConditionalStatementRequest {
+	ConditionalStatement conditional_statement = 1;
+}
+
+message CreateConditionalStatementResponse {
+	ConditionalStatement conditional_statement = 1;
+}
+
+message ReadConditionalStatementRequest {
+	string conditional_statement_id = 1;
+}
+
+message ReadConditionalStatementResponse {
+	repeated ConditionalStatement conditional_statements = 1;
+}
+
+message UpdateConditionalStatementRequest {
+	ConditionalStatement conditional_statement = 1;
+}
+
+message UpdateConditionalStatementResponse {
+	ConditionalStatement conditional_statement = 1;
+}
+
+message DeleteConditionalStatementRequest {
+	string conditional_statement_id = 1;
+}
+
+message DeleteConditionalStatementResponse {
+	int64 deleted_count = 1;
+}
+
+message CreateArgumentRequest {
+	Argument argument = 1;
+}
+
+message CreateArgumentResponse {
+	Argument argument = 1;
+}
+
+message ReadArgumentRequest {
+	string argument_id = 1;
+}
+
+message ReadArgumentResponse {
+	repeated Argument arguments = 1;
+}
+
+message UpdateArgumentRequest {
+	Argument argument = 1;
+}
+
+message UpdateArgumentResponse {
+	Argument argument = 1;
+}
+
+message DeleteArgumentRequest {
+	string argument_id = 1;
+}
+
+message DeleteArgumentResponse {
 	int64 deleted_count = 1;
 }
