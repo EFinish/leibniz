@@ -42,6 +42,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@protobuf-ts/plugin": "^2.8.2",
+		"google-protobuf": "^3.21.2",
 		"svelte-modals": "^1.2.1"
 	}
 }

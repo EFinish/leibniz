@@ -1,5 +1,14 @@
 {
+  "name": "proto",
+  "version": "1.0.0",
+  "description": "This folder contains all [protobuf](https://developers.google.com/protocol-buffers) definitions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "ts-proto": "^1.139.0"
+    "@protobuf-ts/plugin": "^2.8.2"
   }
 }
