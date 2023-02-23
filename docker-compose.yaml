@@ -7,6 +7,13 @@ services:
     networks:
       - leibniz-local
 
+  mongo-seed:
+    build: ./mongo-seed
+    depends_on:
+      - mongo
+    networks:
+      - leibniz-local
+
   argument-access:
     build:
       context: .
@@ -25,6 +32,19 @@ services:
       - leibniz-local
     depends_on:
       - mongo
+
+  fe:
+    build:
+      context: .
+      dockerfile: fe/Dockerfile
+    command: sh -c "cd ./fe && npm run dev -- --host"
+    ports:
+      - "5173:5173"
+    networks:
+      - leibniz-local
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
 
 
 volumes:
