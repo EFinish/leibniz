@@ -4,17 +4,18 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"net/http"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 
 	"github.com/EFinish/leibniz/be/services/argument-access/config"
 	logger "github.com/EFinish/leibniz/be/utilities/logger"
-	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	protoOut "github.com/EFinish/leibniz/proto/gen/argumentaccess/v1"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 )
 
 type (
@@ -54,16 +55,12 @@ func main() {
 
 		panic(err)
 	}
-	// dbDisconnect := func() {
-	// 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	// 	defer cancel()
-	// 	if err := dbClient.Disconnect(ctx); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 
 	ctx, cancel = context.WithTimeout(bgContext, 2*time.Second)
 	defer cancel()
+
+	aa.logger.Infof("pinging argument database")
+
 	err = dbClient.Ping(ctx, readpref.Primary())
 	if err != nil {
 		fmt.Printf("unable to ping to argument database: %v", err)
@@ -71,7 +68,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("connected to mongo DB for argument database")
+	aa.logger.Infof("connected to mongo DB for argument database")
 
 	aa.premisesCollection = dbClient.Database("argument").Collection("premises")
 	aa.subjectsCollection = dbClient.Database("argument").Collection("subjects")
@@ -87,16 +84,36 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer lis.Close()
 
 	grpcServer := grpc.NewServer()
-	reflection.Register(grpcServer)
 
-	argumentAccessServer := ArgumentAccessServiceServer{}
-	protoOut.RegisterArgumentAccessServer(grpcServer, &argumentAccessServer)
+	protoOut.RegisterArgumentAccessServer(grpcServer, &ArgumentAccessServiceServer{})
+	aa.logger.Infof("Serving gRPC on port %v\n", conf.GrpcPort)
 
-	aa.logger.Infof("gRPC server starting")
-	if err := grpcServer.Serve(lis); err != nil {
-		aa.logger.Fatalf("failed to start gRPC server: %v", err)
+	go func() {
+		aa.logger.Fatalf("failed to serve grpc server: %w", grpcServer.Serve(lis))
+	}()
+
+	// create apiGW server
+	// conn, err := grpc.DialContext(
+	// 	context.Background(),
+	// 	fmt.Sprintf("0.0.0.0:%v", conf.GrpcPort),
+	// 	grpc.WithBlock(),
+	// 	grpc.WithTransportCredentials(insecure.NewCredentials()),
+	// )
+
+	gwmux := runtime.NewServeMux()
+	// err = protoOut.RegisterBuildingdataAccessHandler(context.Background(), gwmux, conn)
+	// if err != nil {
+	// 	aa.logger.Fatalf("Failed to register gateway: %w", err)
+	// }
+
+	aa.logger.Infof("API GW server serving on port %s", aa.conf.GrpcPort)
+
+	gwServer := &http.Server{
+		Addr:    fmt.Sprintf(":%s", aa.conf.GrpcPort),
+		Handler: gwmux,
 	}
+
+	aa.logger.Fatalf("failed to listen and serve API GW server: %w", gwServer.ListenAndServe())
 }

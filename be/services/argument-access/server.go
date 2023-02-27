@@ -7,7 +7,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	protoOut "github.com/EFinish/leibniz/proto/gen/argumentaccess/v1"
 )
 
 type ArgumentJSONConvertable struct {

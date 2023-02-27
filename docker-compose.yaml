@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: be/Dockerfile
     init: true
-    command: sh -c "cd ./be/services/argument-access && air"
+    command: sh -c "git config --global --add safe.directory /app && cd ./be/services/argument-access && air"
     env_file:
         - ././be/services/argument-access/.env.prod
     ports:

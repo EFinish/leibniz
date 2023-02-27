@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	protoOut "github.com/EFinish/leibniz/proto/gen/argumentaccess/v1"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
