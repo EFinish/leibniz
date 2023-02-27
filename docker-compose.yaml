@@ -24,6 +24,7 @@ services:
         - ././be/services/argument-access/.env.prod
     ports:
       - "9002:9002"
+      - "8080:8080"
     volumes:
       - ./:/app
       - /root/.cache/go-build

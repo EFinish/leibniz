@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/apsdehal/go-logger v0.0.0-20190515212710-b0d6ccfee0e6
-	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.1
 	github.com/stretchr/testify v1.6.1
 	go.mongodb.org/mongo-driver v1.11.1
