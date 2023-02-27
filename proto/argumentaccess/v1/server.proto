@@ -47,14 +47,14 @@ service ArgumentAccess {
 
 	rpc CreateArgument (CreateArgumentRequest) returns (CreateArgumentResponse) {}
     rpc ReadArgument (ReadArgumentRequest) returns (ReadArgumentResponse) {}
-    rpc UpdateArgument (UpdateArgumentRequest) returns (UpdateArgumentResponse) {
+    rpc UpdateArgument (UpdateArgumentRequest) returns (UpdateArgumentResponse) {}
+    
+	
+	rpc Test (TestRequest) returns (TestResponse) {
 		option (google.api.http) = {
 			get: "/test"
 		  };
 	}
-    
-	
-	rpc Test (TestRequest) returns (TestResponse) {}
 }
 
 message HealthCheckRequest {

@@ -2931,6 +2931,6 @@ export const ArgumentAccess = new ServiceType("argumentaccess.v1.ArgumentAccess"
     { name: "DeleteConditionalStatement", options: {}, I: DeleteConditionalStatementRequest, O: DeleteConditionalStatementResponse },
     { name: "CreateArgument", options: {}, I: CreateArgumentRequest, O: CreateArgumentResponse },
     { name: "ReadArgument", options: {}, I: ReadArgumentRequest, O: ReadArgumentResponse },
-    { name: "UpdateArgument", options: { "google.api.http": { get: "/test" } }, I: UpdateArgumentRequest, O: UpdateArgumentResponse },
-    { name: "Test", options: {}, I: TestRequest, O: TestResponse }
+    { name: "UpdateArgument", options: {}, I: UpdateArgumentRequest, O: UpdateArgumentResponse },
+    { name: "Test", options: { "google.api.http": { get: "/test" } }, I: TestRequest, O: TestResponse }
 ]);
