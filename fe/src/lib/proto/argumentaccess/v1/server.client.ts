@@ -4,8 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { ArgumentAccess } from "./server";
-import type { DeleteArgumentResponse } from "./server";
-import type { DeleteArgumentRequest } from "./server";
+import type { TestResponse } from "./server";
+import type { TestRequest } from "./server";
 import type { UpdateArgumentResponse } from "./server";
 import type { UpdateArgumentRequest } from "./server";
 import type { ReadArgumentResponse } from "./server";
@@ -163,9 +163,9 @@ export interface IArgumentAccessClient {
      */
     updateArgument(input: UpdateArgumentRequest, options?: RpcOptions): UnaryCall<UpdateArgumentRequest, UpdateArgumentResponse>;
     /**
-     * @generated from protobuf rpc: DeleteArgument(argumentaccess.v1.DeleteArgumentRequest) returns (argumentaccess.v1.DeleteArgumentResponse);
+     * @generated from protobuf rpc: Test(argumentaccess.v1.TestRequest) returns (argumentaccess.v1.TestResponse);
      */
-    deleteArgument(input: DeleteArgumentRequest, options?: RpcOptions): UnaryCall<DeleteArgumentRequest, DeleteArgumentResponse>;
+    test(input: TestRequest, options?: RpcOptions): UnaryCall<TestRequest, TestResponse>;
 }
 /**
  * @generated from protobuf service argumentaccess.v1.ArgumentAccess
@@ -352,10 +352,10 @@ export class ArgumentAccessClient implements IArgumentAccessClient, ServiceInfo 
         return stackIntercept<UpdateArgumentRequest, UpdateArgumentResponse>("unary", this._transport, method, opt, input);
     }
     /**
-     * @generated from protobuf rpc: DeleteArgument(argumentaccess.v1.DeleteArgumentRequest) returns (argumentaccess.v1.DeleteArgumentResponse);
+     * @generated from protobuf rpc: Test(argumentaccess.v1.TestRequest) returns (argumentaccess.v1.TestResponse);
      */
-    deleteArgument(input: DeleteArgumentRequest, options?: RpcOptions): UnaryCall<DeleteArgumentRequest, DeleteArgumentResponse> {
+    test(input: TestRequest, options?: RpcOptions): UnaryCall<TestRequest, TestResponse> {
         const method = this.methods[25], opt = this._transport.mergeOptions(options);
-        return stackIntercept<DeleteArgumentRequest, DeleteArgumentResponse>("unary", this._transport, method, opt, input);
+        return stackIntercept<TestRequest, TestResponse>("unary", this._transport, method, opt, input);
     }
 }
