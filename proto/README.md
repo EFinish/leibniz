@@ -8,7 +8,7 @@ Import go clients:
 
 ```Go
 import (
-	pb "github.com/streadydevs/stready/proto/gen/go/<servicename>"
+	pb "github.com/streadydevs/stready/proto/gen/<servicename>"
 )
 
 // Creating a gRPC stub client
