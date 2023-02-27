@@ -2847,8 +2847,8 @@ export const DeleteArgumentResponse = new DeleteArgumentResponse$Type();
 export const ArgumentAccess = new ServiceType("argumentaccess.v1.ArgumentAccess", [
     { name: "Check", options: {}, I: HealthCheckRequest, O: HealthCheckResponse },
     { name: "Watch", serverStreaming: true, options: {}, I: HealthCheckRequest, O: HealthCheckResponse },
-    { name: "CreateSubject", options: {}, I: CreateSubjectRequest, O: CreateSubjectResponse },
-    { name: "ReadSubject", options: {}, I: ReadSubjectRequest, O: ReadSubjectResponse },
+    { name: "CreateSubject", options: { "google.api.http": { post: "/v1/subject", body: "*" } }, I: CreateSubjectRequest, O: CreateSubjectResponse },
+    { name: "ReadSubject", options: { "google.api.http": { get: "/v1/subject" } }, I: ReadSubjectRequest, O: ReadSubjectResponse },
     { name: "UpdateSubject", options: {}, I: UpdateSubjectRequest, O: UpdateSubjectResponse },
     { name: "DeleteSubject", options: {}, I: DeleteSubjectRequest, O: DeleteSubjectResponse },
     { name: "CreatePredicate", options: {}, I: CreatePredicateRequest, O: CreatePredicateResponse },

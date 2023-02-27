@@ -14,7 +14,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"gopkg.in/mgo.v2/bson"
 
-	protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+	protoOut "github.com/EFinish/leibniz/proto/gen/argumentaccess/v1"
 )
 
 var (

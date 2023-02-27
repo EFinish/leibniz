@@ -1,6 +1,6 @@
 package integration_tests
 
-import protoOut "github.com/EFinish/leibniz/proto/gen/go/argumentaccess/v1"
+import protoOut "github.com/EFinish/leibniz/proto/gen/argumentaccess/v1"
 
 var subject = &protoOut.CreateSubjectRequest{
 	Subject: &protoOut.Subject{
