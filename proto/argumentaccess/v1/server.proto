@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
 import "argumentaccess/v1/argument.proto";
 
 option go_package = "go/argumentaccess/v1;argumentaccess";
@@ -10,7 +11,12 @@ service ArgumentAccess {
 	rpc Check (HealthCheckRequest) returns (HealthCheckResponse);
 	rpc Watch (HealthCheckRequest) returns (stream HealthCheckResponse);
 
-    rpc CreateSubject (CreateSubjectRequest) returns (CreateSubjectResponse) {}
+    rpc CreateSubject (CreateSubjectRequest) returns (CreateSubjectResponse) {
+		option (google.api.http) = {
+			post: "/v1/subject"
+			body: '*'
+		  };
+	} 
     rpc ReadSubject (ReadSubjectRequest) returns (ReadSubjectResponse) {}
     rpc UpdateSubject (UpdateSubjectRequest) returns (UpdateSubjectResponse) {}
     rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
