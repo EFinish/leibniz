@@ -74,7 +74,7 @@ message CreateSubjectResponse {
 }
 
 message ReadSubjectRequest {
-	string subject_id = 1;
+	optional string subject_id = 1;
 }
 
 message ReadSubjectResponse {

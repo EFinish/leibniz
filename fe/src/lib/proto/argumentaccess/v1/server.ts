@@ -82,9 +82,9 @@ export interface CreateSubjectResponse {
  */
 export interface ReadSubjectRequest {
     /**
-     * @generated from protobuf field: string subject_id = 1;
+     * @generated from protobuf field: optional string subject_id = 1;
      */
-    subjectId: string;
+    subjectId?: string;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.ReadSubjectResponse
@@ -683,11 +683,11 @@ export const CreateSubjectResponse = new CreateSubjectResponse$Type();
 class ReadSubjectRequest$Type extends MessageType<ReadSubjectRequest> {
     constructor() {
         super("argumentaccess.v1.ReadSubjectRequest", [
-            { no: 1, name: "subject_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "subject_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ReadSubjectRequest>): ReadSubjectRequest {
-        const message = { subjectId: "" };
+        const message = {};
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadSubjectRequest>(this, message, value);
@@ -698,7 +698,7 @@ class ReadSubjectRequest$Type extends MessageType<ReadSubjectRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* string subject_id */ 1:
+                case /* optional string subject_id */ 1:
                     message.subjectId = reader.string();
                     break;
                 default:
@@ -713,8 +713,8 @@ class ReadSubjectRequest$Type extends MessageType<ReadSubjectRequest> {
         return message;
     }
     internalBinaryWrite(message: ReadSubjectRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* string subject_id = 1; */
-        if (message.subjectId !== "")
+        /* optional string subject_id = 1; */
+        if (message.subjectId !== undefined)
             writer.tag(1, WireType.LengthDelimited).string(message.subjectId);
         let u = options.writeUnknownFields;
         if (u !== false)
