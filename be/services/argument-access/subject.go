@@ -40,11 +40,11 @@ func insertSubject(ctx context.Context, subject *protoOut.Subject) (insertedSubj
 	return insertedSubject, nil
 }
 
-func getSubjects(ctx context.Context, subjectID string) ([]*protoOut.Subject, error) {
+func getSubjects(ctx context.Context, subjectID *string) ([]*protoOut.Subject, error) {
 	filter := bson.M{}
 
-	if len(subjectID) > 0 {
-		filter["id"] = subjectID
+	if subjectID != nil && len(*subjectID) > 0 {
+		filter["id"] = *subjectID
 	}
 
 	cursor, err := aa.subjectsCollection.Find(ctx, filter)

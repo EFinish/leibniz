@@ -38,7 +38,7 @@ func (s *ArgumentAccessServiceServer) CreateSubject(ctx context.Context, req *pr
 }
 
 func (s *ArgumentAccessServiceServer) ReadSubject(ctx context.Context, req *protoOut.ReadSubjectRequest) (*protoOut.ReadSubjectResponse, error) {
-	subjects, err := getSubjects(ctx, *req.SubjectId)
+	subjects, err := getSubjects(ctx, req.SubjectId)
 
 	if err != nil {
 		return nil, fmt.Errorf("during subject reading: %w", err)

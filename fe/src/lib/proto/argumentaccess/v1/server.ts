@@ -154,9 +154,9 @@ export interface CreatePredicateResponse {
  */
 export interface ReadPredicateRequest {
     /**
-     * @generated from protobuf field: string predicate_id = 1;
+     * @generated from protobuf field: optional string predicate_id = 1;
      */
-    predicateId: string;
+    predicateId?: string;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.ReadPredicateResponse
@@ -1069,11 +1069,11 @@ export const CreatePredicateResponse = new CreatePredicateResponse$Type();
 class ReadPredicateRequest$Type extends MessageType<ReadPredicateRequest> {
     constructor() {
         super("argumentaccess.v1.ReadPredicateRequest", [
-            { no: 1, name: "predicate_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "predicate_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ReadPredicateRequest>): ReadPredicateRequest {
-        const message = { predicateId: "" };
+        const message = {};
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadPredicateRequest>(this, message, value);
@@ -1084,7 +1084,7 @@ class ReadPredicateRequest$Type extends MessageType<ReadPredicateRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* string predicate_id */ 1:
+                case /* optional string predicate_id */ 1:
                     message.predicateId = reader.string();
                     break;
                 default:
@@ -1099,8 +1099,8 @@ class ReadPredicateRequest$Type extends MessageType<ReadPredicateRequest> {
         return message;
     }
     internalBinaryWrite(message: ReadPredicateRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* string predicate_id = 1; */
-        if (message.predicateId !== "")
+        /* optional string predicate_id = 1; */
+        if (message.predicateId !== undefined)
             writer.tag(1, WireType.LengthDelimited).string(message.predicateId);
         let u = options.writeUnknownFields;
         if (u !== false)
@@ -2914,7 +2914,7 @@ export const ArgumentAccess = new ServiceType("argumentaccess.v1.ArgumentAccess"
     { name: "UpdateSubject", options: {}, I: UpdateSubjectRequest, O: UpdateSubjectResponse },
     { name: "DeleteSubject", options: {}, I: DeleteSubjectRequest, O: DeleteSubjectResponse },
     { name: "CreatePredicate", options: {}, I: CreatePredicateRequest, O: CreatePredicateResponse },
-    { name: "ReadPredicate", options: {}, I: ReadPredicateRequest, O: ReadPredicateResponse },
+    { name: "ReadPredicate", options: { "google.api.http": { get: "/v1/predicate" } }, I: ReadPredicateRequest, O: ReadPredicateResponse },
     { name: "UpdatePredicate", options: {}, I: UpdatePredicateRequest, O: UpdatePredicateResponse },
     { name: "DeletePredicate", options: {}, I: DeletePredicateRequest, O: DeletePredicateResponse },
     { name: "CreatePremise", options: {}, I: CreatePremiseRequest, O: CreatePremiseResponse },

@@ -26,7 +26,11 @@ service ArgumentAccess {
     rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
 
 	rpc CreatePredicate (CreatePredicateRequest) returns (CreatePredicateResponse) {}
-    rpc ReadPredicate (ReadPredicateRequest) returns (ReadPredicateResponse) {}
+    rpc ReadPredicate (ReadPredicateRequest) returns (ReadPredicateResponse) {
+		option (google.api.http) = {
+			get: "/v1/predicate"
+		  };
+	}
     rpc UpdatePredicate (UpdatePredicateRequest) returns (UpdatePredicateResponse) {}
     rpc DeletePredicate (DeletePredicateRequest) returns (DeletePredicateResponse) {}
 
@@ -112,7 +116,7 @@ message CreatePredicateResponse {
 }
 
 message ReadPredicateRequest {
-	string predicate_id = 1;
+	optional string predicate_id = 1;
 }
 
 message ReadPredicateResponse {

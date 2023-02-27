@@ -42,11 +42,11 @@ func insertPredicate(ctx context.Context, predicate *protoOut.Predicate) (insert
 	return insertedPredicate, nil
 }
 
-func getPredicates(ctx context.Context, PredicateID string) ([]*protoOut.Predicate, error) {
+func getPredicates(ctx context.Context, predicateID *string) ([]*protoOut.Predicate, error) {
 	filter := bson.M{}
 
-	if len(PredicateID) > 0 {
-		filter["id"] = PredicateID
+	if predicateID != nil && len(*predicateID) > 0 {
+		filter["id"] = predicateID
 	}
 
 	cursor, err := aa.predicatesCollection.Find(ctx, filter)

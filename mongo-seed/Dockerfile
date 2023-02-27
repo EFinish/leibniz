@@ -1,6 +1,6 @@
 FROM mongo
 
-# COPY potato-data.json /potato-data.json
-# COPY sack-data.json /sack-data.json
-# CMD mongoimport --host mongo --db vegetable --collection potatoes --file /potato-data.json --jsonArray \
-#     && mongoimport --host mongo --db vegetable --collection sacks --file /sack-data.json --jsonArray
+COPY subjects-data.json /subjects-data.json
+COPY predicates-data.json /predicates-data.json
+CMD mongoimport --host mongo --db argument --collection subjects --file /subjects-data.json --jsonArray \
+    && mongoimport --host mongo --db argument --collection predicates --file /predicates-data.json --jsonArray
