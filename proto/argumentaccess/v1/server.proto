@@ -47,8 +47,14 @@ service ArgumentAccess {
 
 	rpc CreateArgument (CreateArgumentRequest) returns (CreateArgumentResponse) {}
     rpc ReadArgument (ReadArgumentRequest) returns (ReadArgumentResponse) {}
-    rpc UpdateArgument (UpdateArgumentRequest) returns (UpdateArgumentResponse) {}
-    rpc DeleteArgument (DeleteArgumentRequest) returns (DeleteArgumentResponse) {}
+    rpc UpdateArgument (UpdateArgumentRequest) returns (UpdateArgumentResponse) {
+		option (google.api.http) = {
+			get: "/test"
+		  };
+	}
+    
+	
+	rpc Test (TestRequest) returns (TestResponse) {}
 }
 
 message HealthCheckRequest {
@@ -255,4 +261,10 @@ message DeleteArgumentRequest {
 
 message DeleteArgumentResponse {
 	int64 deleted_count = 1;
+}
+
+message TestRequest {
+}
+
+message TestResponse {
 }

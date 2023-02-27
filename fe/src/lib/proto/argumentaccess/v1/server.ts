@@ -491,6 +491,16 @@ export interface DeleteArgumentResponse {
      */
     deletedCount: bigint;
 }
+/**
+ * @generated from protobuf message argumentaccess.v1.TestRequest
+ */
+export interface TestRequest {
+}
+/**
+ * @generated from protobuf message argumentaccess.v1.TestResponse
+ */
+export interface TestResponse {
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class HealthCheckRequest$Type extends MessageType<HealthCheckRequest> {
     constructor() {
@@ -2841,6 +2851,58 @@ class DeleteArgumentResponse$Type extends MessageType<DeleteArgumentResponse> {
  * @generated MessageType for protobuf message argumentaccess.v1.DeleteArgumentResponse
  */
 export const DeleteArgumentResponse = new DeleteArgumentResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class TestRequest$Type extends MessageType<TestRequest> {
+    constructor() {
+        super("argumentaccess.v1.TestRequest", []);
+    }
+    create(value?: PartialMessage<TestRequest>): TestRequest {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<TestRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: TestRequest): TestRequest {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: TestRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message argumentaccess.v1.TestRequest
+ */
+export const TestRequest = new TestRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class TestResponse$Type extends MessageType<TestResponse> {
+    constructor() {
+        super("argumentaccess.v1.TestResponse", []);
+    }
+    create(value?: PartialMessage<TestResponse>): TestResponse {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<TestResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: TestResponse): TestResponse {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: TestResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message argumentaccess.v1.TestResponse
+ */
+export const TestResponse = new TestResponse$Type();
 /**
  * @generated ServiceType for protobuf service argumentaccess.v1.ArgumentAccess
  */
@@ -2869,6 +2931,6 @@ export const ArgumentAccess = new ServiceType("argumentaccess.v1.ArgumentAccess"
     { name: "DeleteConditionalStatement", options: {}, I: DeleteConditionalStatementRequest, O: DeleteConditionalStatementResponse },
     { name: "CreateArgument", options: {}, I: CreateArgumentRequest, O: CreateArgumentResponse },
     { name: "ReadArgument", options: {}, I: ReadArgumentRequest, O: ReadArgumentResponse },
-    { name: "UpdateArgument", options: {}, I: UpdateArgumentRequest, O: UpdateArgumentResponse },
-    { name: "DeleteArgument", options: {}, I: DeleteArgumentRequest, O: DeleteArgumentResponse }
+    { name: "UpdateArgument", options: { "google.api.http": { get: "/test" } }, I: UpdateArgumentRequest, O: UpdateArgumentResponse },
+    { name: "Test", options: {}, I: TestRequest, O: TestResponse }
 ]);

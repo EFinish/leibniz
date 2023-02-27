@@ -47,7 +47,7 @@ type ArgumentAccessClient interface {
 	CreateArgument(ctx context.Context, in *CreateArgumentRequest, opts ...grpc.CallOption) (*CreateArgumentResponse, error)
 	ReadArgument(ctx context.Context, in *ReadArgumentRequest, opts ...grpc.CallOption) (*ReadArgumentResponse, error)
 	UpdateArgument(ctx context.Context, in *UpdateArgumentRequest, opts ...grpc.CallOption) (*UpdateArgumentResponse, error)
-	DeleteArgument(ctx context.Context, in *DeleteArgumentRequest, opts ...grpc.CallOption) (*DeleteArgumentResponse, error)
+	Test(ctx context.Context, in *TestRequest, opts ...grpc.CallOption) (*TestResponse, error)
 }
 
 type argumentAccessClient struct {
@@ -306,9 +306,9 @@ func (c *argumentAccessClient) UpdateArgument(ctx context.Context, in *UpdateArg
 	return out, nil
 }
 
-func (c *argumentAccessClient) DeleteArgument(ctx context.Context, in *DeleteArgumentRequest, opts ...grpc.CallOption) (*DeleteArgumentResponse, error) {
-	out := new(DeleteArgumentResponse)
-	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/DeleteArgument", in, out, opts...)
+func (c *argumentAccessClient) Test(ctx context.Context, in *TestRequest, opts ...grpc.CallOption) (*TestResponse, error) {
+	out := new(TestResponse)
+	err := c.cc.Invoke(ctx, "/argumentaccess.v1.ArgumentAccess/Test", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -344,7 +344,7 @@ type ArgumentAccessServer interface {
 	CreateArgument(context.Context, *CreateArgumentRequest) (*CreateArgumentResponse, error)
 	ReadArgument(context.Context, *ReadArgumentRequest) (*ReadArgumentResponse, error)
 	UpdateArgument(context.Context, *UpdateArgumentRequest) (*UpdateArgumentResponse, error)
-	DeleteArgument(context.Context, *DeleteArgumentRequest) (*DeleteArgumentResponse, error)
+	Test(context.Context, *TestRequest) (*TestResponse, error)
 	mustEmbedUnimplementedArgumentAccessServer()
 }
 
@@ -427,8 +427,8 @@ func (UnimplementedArgumentAccessServer) ReadArgument(context.Context, *ReadArgu
 func (UnimplementedArgumentAccessServer) UpdateArgument(context.Context, *UpdateArgumentRequest) (*UpdateArgumentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateArgument not implemented")
 }
-func (UnimplementedArgumentAccessServer) DeleteArgument(context.Context, *DeleteArgumentRequest) (*DeleteArgumentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteArgument not implemented")
+func (UnimplementedArgumentAccessServer) Test(context.Context, *TestRequest) (*TestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Test not implemented")
 }
 func (UnimplementedArgumentAccessServer) mustEmbedUnimplementedArgumentAccessServer() {}
 
@@ -896,20 +896,20 @@ func _ArgumentAccess_UpdateArgument_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ArgumentAccess_DeleteArgument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteArgumentRequest)
+func _ArgumentAccess_Test_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TestRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ArgumentAccessServer).DeleteArgument(ctx, in)
+		return srv.(ArgumentAccessServer).Test(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/argumentaccess.v1.ArgumentAccess/DeleteArgument",
+		FullMethod: "/argumentaccess.v1.ArgumentAccess/Test",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ArgumentAccessServer).DeleteArgument(ctx, req.(*DeleteArgumentRequest))
+		return srv.(ArgumentAccessServer).Test(ctx, req.(*TestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1018,8 +1018,8 @@ var ArgumentAccess_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ArgumentAccess_UpdateArgument_Handler,
 		},
 		{
-			MethodName: "DeleteArgument",
-			Handler:    _ArgumentAccess_DeleteArgument_Handler,
+			MethodName: "Test",
+			Handler:    _ArgumentAccess_Test_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
