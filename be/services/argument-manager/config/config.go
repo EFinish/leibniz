@@ -10,15 +10,13 @@ const (
 	TestEnv = "test"
 
 	// Env vars
-	appEnv           = "APP_ENV" // intentionally without prefix
-	ArgumentDbURLEnv = "ARGUMENT_ACCESS_ARGUMENT_DB_URL"
-	GrpcPortEnv      = "ARGUMENT_ACCESS_GRPC_PORT"
+	appEnv      = "APP_ENV" // intentionally without prefix
+	GrpcPortEnv = "ARGUMENT_ACCESS_GRPC_PORT"
 )
 
 type Config struct {
-	Env           string
-	ArgumentDbURL string
-	GrpcPort      string
+	Env      string
+	GrpcPort string
 }
 
 func NewConfig() Config {
@@ -26,8 +24,7 @@ func NewConfig() Config {
 
 	// Set defaults
 	c.Env = TestEnv
-	c.ArgumentDbURL = ""
-	c.GrpcPort = "9102"
+	c.GrpcPort = "9002"
 
 	return c
 }
@@ -38,11 +35,6 @@ func GetConfig() *Config {
 	env, present := os.LookupEnv(appEnv)
 	if present {
 		c.Env = env
-	}
-
-	ArgumentDbURL, present := os.LookupEnv(ArgumentDbURLEnv)
-	if present {
-		c.ArgumentDbURL = ArgumentDbURL
 	}
 
 	GrpcPort, present := os.LookupEnv(GrpcPortEnv)

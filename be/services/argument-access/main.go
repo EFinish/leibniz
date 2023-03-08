@@ -3,17 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"net"
-	"net/http"
 	"time"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 
 	"github.com/EFinish/leibniz/be/services/argument-access/config"
@@ -101,32 +97,4 @@ func main() {
 	go func() {
 		aa.logger.Fatalf("failed to serve grpc server: %w", grpcServer.Serve(lis))
 	}()
-
-	// create apiGW server
-	conn, err := grpc.DialContext(
-		context.Background(),
-		fmt.Sprintf("0.0.0.0:%v", conf.GrpcPort),
-		grpc.WithBlock(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
-
-	if err != nil {
-		aa.logger.Fatalf("Failed to dial server:", err)
-	}
-
-	gwmux := runtime.NewServeMux()
-
-	err = protoOut.RegisterArgumentAccessHandler(context.Background(), gwmux, conn)
-	if err != nil {
-		log.Fatalln("Failed to register gateway:", err)
-	}
-
-	gwServer := &http.Server{
-		Addr:    fmt.Sprintf(":%s", "9000"),
-		Handler: gwmux,
-	}
-
-	log.Println("Serving gRPC-Gateway on http://0.0.0.0:9000")
-
-	aa.logger.Fatalf("failed to listen and serve API GW server: %w", gwServer.ListenAndServe())
 }

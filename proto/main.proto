@@ -4,3 +4,4 @@ option go_package = "go/main/v1;main";
 
 import "argumentaccess/v1/server.proto";
 import "argumentaccess/v1/argument.proto";
+import "argumentmanager/v1/server.proto";
