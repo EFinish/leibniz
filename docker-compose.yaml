@@ -24,7 +24,7 @@ services:
         - ././be/services/argument-access/.env.prod
     ports:
       - "9002:9002"
-      - "8080:8080"
+      - "9000:9000"
     volumes:
       - ./:/app
       - /root/.cache/go-build
@@ -38,9 +38,9 @@ services:
     build:
       context: .
       dockerfile: fe/Dockerfile
-    command: sh -c "cd ./fe && npm run dev -- --host"
+    command: sh -c "cd ./fe && npm run start -- --host"
     ports:
-      - "5173:5173"
+      - "3000:3000"
     networks:
       - leibniz-local
     volumes:

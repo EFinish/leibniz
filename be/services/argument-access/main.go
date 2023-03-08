@@ -122,11 +122,11 @@ func main() {
 	}
 
 	gwServer := &http.Server{
-		Addr:    fmt.Sprintf(":%s", "8080"),
+		Addr:    fmt.Sprintf(":%s", "9000"),
 		Handler: gwmux,
 	}
 
-	log.Println("Serving gRPC-Gateway on http://0.0.0.0:8080")
+	log.Println("Serving gRPC-Gateway on http://0.0.0.0:9000")
 
 	aa.logger.Fatalf("failed to listen and serve API GW server: %w", gwServer.ListenAndServe())
 }

@@ -2,11 +2,11 @@ import type { CreateSubjectResponse, CreateSubjectRequest, ReadSubjectRequest, R
 import axios from "axios";
 
 export async function CreateSubject(request: CreateSubjectRequest): CreateSubjectResponse {
-    axios.post("http://localhost:8080/v1/subject")
+    axios.post("http://localhost:9000/v1/subject")
 }
 
 export async function GetSubjects(request: ReadSubjectRequest): ReadSubjectResponse {
-    await axios.get("http://localhost:8080/v1/subject").then(function (response) {
+    await axios.get("http://localhost:9000/v1/subject").then(function (response) {
         // handle success
         console.log(response);
       })
