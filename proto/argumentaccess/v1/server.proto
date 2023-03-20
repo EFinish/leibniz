@@ -104,7 +104,7 @@ message DeleteSubjectRequest {
 }
 
 message DeleteSubjectResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message CreatePredicateRequest {
@@ -136,7 +136,7 @@ message DeletePredicateRequest {
 }
 
 message DeletePredicateResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message CreatePremiseRequest {
@@ -168,7 +168,7 @@ message DeletePremiseRequest {
 }
 
 message DeletePremiseResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message CreatePropositionRequest {
@@ -200,7 +200,7 @@ message DeletePropositionRequest {
 }
 
 message DeletePropositionResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message CreateConditionalStatementRequest {
@@ -232,7 +232,7 @@ message DeleteConditionalStatementRequest {
 }
 
 message DeleteConditionalStatementResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message CreateArgumentRequest {
@@ -264,7 +264,7 @@ message DeleteArgumentRequest {
 }
 
 message DeleteArgumentResponse {
-	int64 deleted_count = 1;
+	int32 deleted_count = 1;
 }
 
 message TestRequest {

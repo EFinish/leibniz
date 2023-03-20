@@ -127,9 +127,9 @@ export interface DeleteSubjectRequest {
  */
 export interface DeleteSubjectResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.CreatePredicateRequest
@@ -199,9 +199,9 @@ export interface DeletePredicateRequest {
  */
 export interface DeletePredicateResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.CreatePremiseRequest
@@ -271,9 +271,9 @@ export interface DeletePremiseRequest {
  */
 export interface DeletePremiseResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.CreatePropositionRequest
@@ -343,9 +343,9 @@ export interface DeletePropositionRequest {
  */
 export interface DeletePropositionResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.CreateConditionalStatementRequest
@@ -415,9 +415,9 @@ export interface DeleteConditionalStatementRequest {
  */
 export interface DeleteConditionalStatementResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.CreateArgumentRequest
@@ -487,9 +487,9 @@ export interface DeleteArgumentRequest {
  */
 export interface DeleteArgumentResponse {
     /**
-     * @generated from protobuf field: int64 deleted_count = 1;
+     * @generated from protobuf field: int32 deleted_count = 1;
      */
-    deletedCount: bigint;
+    deletedCount: number;
 }
 /**
  * @generated from protobuf message argumentaccess.v1.TestRequest
@@ -928,11 +928,11 @@ export const DeleteSubjectRequest = new DeleteSubjectRequest$Type();
 class DeleteSubjectResponse$Type extends MessageType<DeleteSubjectResponse> {
     constructor() {
         super("argumentaccess.v1.DeleteSubjectResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteSubjectResponse>): DeleteSubjectResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteSubjectResponse>(this, message, value);
@@ -943,8 +943,8 @@ class DeleteSubjectResponse$Type extends MessageType<DeleteSubjectResponse> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -958,9 +958,9 @@ class DeleteSubjectResponse$Type extends MessageType<DeleteSubjectResponse> {
         return message;
     }
     internalBinaryWrite(message: DeleteSubjectResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1304,11 +1304,11 @@ export const DeletePredicateRequest = new DeletePredicateRequest$Type();
 class DeletePredicateResponse$Type extends MessageType<DeletePredicateResponse> {
     constructor() {
         super("argumentaccess.v1.DeletePredicateResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeletePredicateResponse>): DeletePredicateResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeletePredicateResponse>(this, message, value);
@@ -1319,8 +1319,8 @@ class DeletePredicateResponse$Type extends MessageType<DeletePredicateResponse> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1334,9 +1334,9 @@ class DeletePredicateResponse$Type extends MessageType<DeletePredicateResponse> 
         return message;
     }
     internalBinaryWrite(message: DeletePredicateResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1680,11 +1680,11 @@ export const DeletePremiseRequest = new DeletePremiseRequest$Type();
 class DeletePremiseResponse$Type extends MessageType<DeletePremiseResponse> {
     constructor() {
         super("argumentaccess.v1.DeletePremiseResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeletePremiseResponse>): DeletePremiseResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeletePremiseResponse>(this, message, value);
@@ -1695,8 +1695,8 @@ class DeletePremiseResponse$Type extends MessageType<DeletePremiseResponse> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1710,9 +1710,9 @@ class DeletePremiseResponse$Type extends MessageType<DeletePremiseResponse> {
         return message;
     }
     internalBinaryWrite(message: DeletePremiseResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2056,11 +2056,11 @@ export const DeletePropositionRequest = new DeletePropositionRequest$Type();
 class DeletePropositionResponse$Type extends MessageType<DeletePropositionResponse> {
     constructor() {
         super("argumentaccess.v1.DeletePropositionResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeletePropositionResponse>): DeletePropositionResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeletePropositionResponse>(this, message, value);
@@ -2071,8 +2071,8 @@ class DeletePropositionResponse$Type extends MessageType<DeletePropositionRespon
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2086,9 +2086,9 @@ class DeletePropositionResponse$Type extends MessageType<DeletePropositionRespon
         return message;
     }
     internalBinaryWrite(message: DeletePropositionResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2432,11 +2432,11 @@ export const DeleteConditionalStatementRequest = new DeleteConditionalStatementR
 class DeleteConditionalStatementResponse$Type extends MessageType<DeleteConditionalStatementResponse> {
     constructor() {
         super("argumentaccess.v1.DeleteConditionalStatementResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteConditionalStatementResponse>): DeleteConditionalStatementResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteConditionalStatementResponse>(this, message, value);
@@ -2447,8 +2447,8 @@ class DeleteConditionalStatementResponse$Type extends MessageType<DeleteConditio
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2462,9 +2462,9 @@ class DeleteConditionalStatementResponse$Type extends MessageType<DeleteConditio
         return message;
     }
     internalBinaryWrite(message: DeleteConditionalStatementResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2808,11 +2808,11 @@ export const DeleteArgumentRequest = new DeleteArgumentRequest$Type();
 class DeleteArgumentResponse$Type extends MessageType<DeleteArgumentResponse> {
     constructor() {
         super("argumentaccess.v1.DeleteArgumentResponse", [
-            { no: 1, name: "deleted_count", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "deleted_count", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteArgumentResponse>): DeleteArgumentResponse {
-        const message = { deletedCount: 0n };
+        const message = { deletedCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteArgumentResponse>(this, message, value);
@@ -2823,8 +2823,8 @@ class DeleteArgumentResponse$Type extends MessageType<DeleteArgumentResponse> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 deleted_count */ 1:
-                    message.deletedCount = reader.int64().toBigInt();
+                case /* int32 deleted_count */ 1:
+                    message.deletedCount = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2838,9 +2838,9 @@ class DeleteArgumentResponse$Type extends MessageType<DeleteArgumentResponse> {
         return message;
     }
     internalBinaryWrite(message: DeleteArgumentResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 deleted_count = 1; */
-        if (message.deletedCount !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.deletedCount);
+        /* int32 deleted_count = 1; */
+        if (message.deletedCount !== 0)
+            writer.tag(1, WireType.Varint).int32(message.deletedCount);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
