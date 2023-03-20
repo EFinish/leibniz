@@ -1,12 +1,14 @@
 generate:
 	rm -rf ./gen/* && rm -rf ../fe/src/lib/proto/*
+	
 	protoc -I=. \
+		--plugin="protoc-gen-ts=./node_modules/.bin/protoc-gen-ts" \
+		--ts_out="../fe/src/types/proto/" \
 		--go_out=./gen/ --go_opt paths=source_relative \
 		--go-grpc_out=./gen/ --go-grpc_opt paths=source_relative \
 		--grpc-gateway_out=./gen/ --grpc-gateway_opt paths=source_relative \
 		**/**/*.proto
-	protoc-go-inject-tag -input="./gen/**/**/*.pb.go"
-	npx protoc --ts_opt generate_dependencies --ts_out ../fe/src/types/proto/ --proto_path ./ ./main.proto
+		protoc-go-inject-tag -input="./gen/**/**/*.pb.go"
 
 lint:
 	protoc --lint_out=. *.proto
