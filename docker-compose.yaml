@@ -63,9 +63,7 @@ services:
     networks:
       - leibniz-local
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-
+      - ./fe:/usr/src/app
 
 volumes:
   go-mod-cache:
