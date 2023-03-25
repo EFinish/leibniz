@@ -1,11 +1,10 @@
-import * as React from 'react';
+import 'bulma/css/bulma.min.css';
+import Home from './components/pages/Home';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Hello React</h1>
-    </div>
+    <Home />
   );
-}
+};
 
 export default App;
