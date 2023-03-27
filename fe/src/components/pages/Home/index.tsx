@@ -1,4 +1,21 @@
-const Home = () => {
+import { MouseEvent } from "react";
+import { useAppDispatch } from "../../../app/hooks";
+import { showCreateStatementModal } from "../../../app/reducers/modal-to-show-slice";
+
+type Props = {
+}
+
+const Home: React.FC<Props> = (props: Props) => {
+  const dispatch = useAppDispatch();
+
+  function handleOnClickCreateStatement(
+    event: MouseEvent<HTMLButtonElement>
+  ): void {
+    console.log("clicked create statement")
+
+    dispatch(showCreateStatementModal());
+  }
+
   return (
     <>
       <section className="hero is-primary">
@@ -16,7 +33,11 @@ const Home = () => {
           <div className="card">
             <div className="card-content columns">
               <div className="column">
-                <button type="button" className="button is-primary">
+                <button
+                  type="button"
+                  className="button is-primary"
+                  onClick={handleOnClickCreateStatement}
+                >
                   Create Statement
                 </button>
               </div>
