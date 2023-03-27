@@ -1,7 +1,4 @@
-// export type SHOWMODALACTIONTYPE = "HIDE" | "SHOW_CREATE_STATEMENT";
-export enum ModalToShowType {
-  SHOW_CREATE_STATEMENT = "CREATE_STATEMENT",
-}
+export type ModalToShowType = "CREATE_STATEMENT" | "CREATE_PREDICATE";
 
 export interface ShowModalReducerAction {
   type: ModalToShowType;

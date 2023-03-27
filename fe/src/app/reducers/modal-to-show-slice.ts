@@ -17,10 +17,13 @@ const modalToShowSlice = createSlice({
         state.value = null
     },
     showCreateStatementModal(state) {
-      state.value = ModalToShowType.SHOW_CREATE_STATEMENT
+      state.value = "CREATE_STATEMENT"
+    },
+    showCreatePredicateModal(state) {
+      state.value = "CREATE_PREDICATE"
     }
   },
 });
 
-export const { hideModal, showCreateStatementModal } = modalToShowSlice.actions;
+export const { hideModal, showCreateStatementModal, showCreatePredicateModal } = modalToShowSlice.actions;
 export default modalToShowSlice.reducer;

@@ -5,7 +5,7 @@ import Modal from "../../common/Modal";
 
 type Props = {};
 
-const CreateStatementModal: React.FC<Props> = (props: Props) => {
+const CreatePredicateModal: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch();
 
   function closeModal(
@@ -17,10 +17,10 @@ const CreateStatementModal: React.FC<Props> = (props: Props) => {
   return (
     <Modal>
       <header className="modal-card-head">
-        <p className="modal-card-title">Create Statement</p>
+        <p className="modal-card-title">Create Predicate</p>
         <button className="delete" aria-label="close" onClick={closeModal}></button>
       </header>
-      <section className="modal-card-body">Create Statement</section>
+      <section className="modal-card-body">Create Predicate</section>
       <footer className="modal-card-foot">
         <button className="button is-success">Save changes</button>
         <button className="button" onClick={closeModal}>Cancel</button>
@@ -29,4 +29,4 @@ const CreateStatementModal: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default CreateStatementModal;
+export default CreatePredicateModal;

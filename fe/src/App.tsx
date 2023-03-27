@@ -1,8 +1,8 @@
 import "bulma/css/bulma.min.css";
 import { useAppSelector } from "./app/hooks";
+import CreatePredicateModal from "./components/modals/CreatePredicate";
 import CreateStatementModal from "./components/modals/CreateStatement";
 import Home from "./components/pages/Home";
-import { ModalToShowType, ShowModalReducerAction } from "./types/common/reducer";
 
 const App = () => {
   const modalToShow = useAppSelector((state) => state.modalToShow.value);
@@ -10,9 +10,16 @@ const App = () => {
   return (
     <>
       <Home />
-        {modalToShow !== null && Object.values(ModalToShowType).includes(modalToShow) && (
-          <CreateStatementModal />
-        )}
+      {modalToShow !== null && (
+        <div>
+          {modalToShow === "CREATE_STATEMENT" && (
+            <CreateStatementModal />
+          )}
+          {modalToShow === "CREATE_PREDICATE" && (
+            <CreatePredicateModal />
+          )}
+        </div>
+      )}
     </>
   );
 };
