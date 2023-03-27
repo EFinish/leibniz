@@ -1,9 +1,11 @@
 import { MouseEvent } from "react";
 import { useAppDispatch } from "../../../app/hooks";
-import { showCreatePredicateModal, showCreateStatementModal } from "../../../app/reducers/modal-to-show-slice";
+import {
+  showCreatePredicateModal,
+  showCreateStatementModal,
+} from "../../../app/reducers/modal-to-show-slice";
 
-type Props = {
-}
+type Props = {};
 
 const Home: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch();
@@ -35,20 +37,26 @@ const Home: React.FC<Props> = (props: Props) => {
       <div className="columns">
         <div className="column">
           <div className="card">
-            <div className="card-content columns">
-              <div className="column">
-                <button
-                  type="button"
-                  className="button is-primary"
-                  onClick={handleOnClickCreateStatement}
-                >
-                  Create Statement
-                </button>
-              </div>
-              <div className="column">
-                <button type="button" className="button is-primary" onClick={handleOnClickCreatePredicate}>
-                  Create Predicate
-                </button>
+            <div className="card-content">
+              <div className="columns">
+                <div className="column">
+                  <button
+                    type="button"
+                    className="button is-primary"
+                    onClick={handleOnClickCreateStatement}
+                  >
+                    Create Statement
+                  </button>
+                </div>
+                <div className="column">
+                  <button
+                    type="button"
+                    className="button is-primary"
+                    onClick={handleOnClickCreatePredicate}
+                  >
+                    Create Predicate
+                  </button>
+                </div>
               </div>
             </div>
           </div>
