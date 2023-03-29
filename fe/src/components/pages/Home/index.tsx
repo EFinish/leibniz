@@ -61,8 +61,6 @@ const Home: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="column"></div>
-        <div className="column"></div>
       </div>
     </>
   );
