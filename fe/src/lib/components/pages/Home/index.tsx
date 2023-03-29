@@ -1,9 +1,9 @@
 import { MouseEvent } from "react";
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch } from "../../../../app/hooks";
 import {
   showCreatePredicateModal,
   showCreateStatementModal,
-} from "../../../app/reducers/modal-to-show-slice";
+} from "../../../../app/reducers/modal-to-show-slice";
 
 type Props = {};
 
@@ -55,6 +55,42 @@ const Home: React.FC<Props> = (props: Props) => {
                     onClick={handleOnClickCreatePredicate}
                   >
                     Create Predicate
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="column">
+          <div className="card">
+            <div className="card-content">
+              <div className="columns">
+                <div className="column">
+                  <button type="button" className="button is-primary">
+                    Create Premise
+                  </button>
+                </div>
+                <div className="column">
+                  <button type="button" className="button is-primary">
+                    Create Proposition
+                  </button>
+                </div>
+                <div className="column">
+                  <button type="button" className="button is-primary">
+                    Create Conditional Statement
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="column">
+          <div className="card">
+            <div className="card-content">
+              <div className="columns">
+                <div className="column">
+                  <button type="button" className="button is-primary">
+                    Create Argument
                   </button>
                 </div>
               </div>

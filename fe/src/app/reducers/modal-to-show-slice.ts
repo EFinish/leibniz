@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ModalToShowType } from '../../types/common/reducer';
+import { createSlice } from "@reduxjs/toolkit";
+import { ModalToShowType } from "../../types/reducer";
 
 interface ModalToShowState {
   value: ModalToShowType | null;
@@ -10,20 +10,21 @@ const initialState: ModalToShowState = {
 };
 
 const modalToShowSlice = createSlice({
-  name: 'modalToShow',
+  name: "modalToShow",
   initialState,
   reducers: {
     hideModal(state) {
-        state.value = null
+      state.value = null;
     },
     showCreateStatementModal(state) {
-      state.value = "CREATE_STATEMENT"
+      state.value = "CREATE_STATEMENT";
     },
     showCreatePredicateModal(state) {
-      state.value = "CREATE_PREDICATE"
-    }
+      state.value = "CREATE_PREDICATE";
+    },
   },
 });
 
-export const { hideModal, showCreateStatementModal, showCreatePredicateModal } = modalToShowSlice.actions;
+export const { hideModal, showCreateStatementModal, showCreatePredicateModal } =
+  modalToShowSlice.actions;
 export default modalToShowSlice.reducer;

@@ -1,8 +1,8 @@
 import "bulma/css/bulma.min.css";
 import { useAppSelector } from "./app/hooks";
-import CreatePredicateModal from "./components/modals/CreatePredicate";
-import CreateStatementModal from "./components/modals/CreateStatement";
-import Home from "./components/pages/Home";
+import CreatePredicateModal from "./lib/components/modals/CreatePredicate";
+import CreateStatementModal from "./lib/components/modals/CreateStatement";
+import Home from "./lib/components/pages/Home";
 
 const App = () => {
   const modalToShow = useAppSelector((state) => state.modalToShow.value);
@@ -12,12 +12,8 @@ const App = () => {
       <Home />
       {modalToShow !== null && (
         <div>
-          {modalToShow === "CREATE_STATEMENT" && (
-            <CreateStatementModal />
-          )}
-          {modalToShow === "CREATE_PREDICATE" && (
-            <CreatePredicateModal />
-          )}
+          {modalToShow === "CREATE_STATEMENT" && <CreateStatementModal />}
+          {modalToShow === "CREATE_PREDICATE" && <CreatePredicateModal />}
         </div>
       )}
     </>

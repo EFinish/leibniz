@@ -1,9 +1,8 @@
 generate:
-	rm -rf ./gen/* && rm -rf ../fe/src/lib/proto/*
+	rm -rf ./gen/*
 	
 	protoc -I=. \
 		--plugin="protoc-gen-ts=./node_modules/.bin/protoc-gen-ts" \
-		--ts_out="../fe/src/types/proto/" \
 		--go_out=./gen/ --go_opt paths=source_relative \
 		--go-grpc_out=./gen/ --go-grpc_opt paths=source_relative \
 		--grpc-gateway_out=./gen/ --grpc-gateway_opt paths=source_relative \
@@ -22,5 +21,4 @@ install:
 		github.com/ckaznocha/protoc-gen-lint \
 		github.com/favadi/protoc-go-inject-tag
 	sudo apt install protobuf-compiler
-	npm i
 
