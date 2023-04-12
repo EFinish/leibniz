@@ -27,7 +27,7 @@ const CreateStatementModal: React.FC<Props> = (props: Props) => {
       },
     };
 
-    await CreateSubject(req);
+    const resp = await CreateSubject(req);
     // dispatch(hideModal());
   }
 

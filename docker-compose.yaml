@@ -33,31 +33,11 @@ services:
     depends_on:
       - mongo
 
-  argument-manager:
-    build:
-      context: .
-      dockerfile: be/Dockerfile
-    init: true
-    command: sh -c "git config --global --add safe.directory /app && cd ./be/services/argument-access && air"
-    env_file:
-        - ././be/services/argument-manager/.env.prod
-    ports:
-      - "9002:9002"
-      - "9000:9000"
-    volumes:
-      - ./:/app
-      - /root/.cache/go-build
-      - go-mod-cache:/go/pkg/mod
-    networks:
-      - leibniz-local
-    depends_on:
-      - mongo
-
   fe:
     build:
       context: .
       dockerfile: fe/Dockerfile
-    command: sh -c "cd ./fe && npm run start -- --host"
+    command: sh -c "cd ./fe && npm run dev -- --host"
     ports:
       - "3000:3000"
     networks:
